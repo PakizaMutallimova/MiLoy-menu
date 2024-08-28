@@ -108,10 +108,11 @@ main{
     display: flex;
     align-items: center;
     position: absolute;
+    top: 0;
     width: 100%;
     z-index: 10000;
     height: 100vh;
-    background-color: red;
+    background-color: white;
     padding: 40px;
     margin: 0;
 }
@@ -119,7 +120,6 @@ main{
 .search-input{
     display: flex;
     justify-content: center;
-    background-color: yellow;
     align-items: center;
     width: 100%;
     position: absolute;
@@ -134,11 +134,15 @@ main{
     width: 90%;
     padding: 10px;
     border-radius: 10px;
-    border: 1px solid gray;
+    border: 1px solid rgb(198, 196, 196);
     outline: none;
     transition: .3s;
 }
 
+.search-input input:focus{
+    border: 1px solid blue;
+    box-shadow: 0 0 4px rgba(0, 0, 255, 0.5);
+}
 
 
 
