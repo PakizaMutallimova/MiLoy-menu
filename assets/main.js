@@ -201,6 +201,7 @@ const menuData = categories.map(category => `
             <div class="card-content d-flex align-items-center">
                 <div class="ms-3">
                     <h5 class="product-name mb-0">${product.name}</h5>
+                    ${product.discount ? `<p class="mb-0 text-muted"><del>${product.discount} ₼</del></p>` : ""}
                     <p class="mb-0 text-muted">${product.price} ₼</p>
                 </div>
                 <img src="${product.image}" class="img img-fluid rounded" style="width: 100px; height: 80px;" alt="Espresso double">
@@ -341,19 +342,44 @@ checkedİnputs.forEach(checkbox => {
  * Search input click
  */
 
-const searchBtn = document.querySelector('.search')
-const searchInputSec = document.querySelector('.search-input-section')
-const header = document.querySelector('header')
+const searchBtn = document.querySelector('.search');
+const searchInputSec = document.querySelector('.search-input-section');
 
-searchBtn.addEventListener('click', ()=>{
-    searchInputSec.style.display = 'block'
-    body.style.overflow = 'hidden'
-    // header.style.display = 'none'
-})
+searchBtn.addEventListener('click', () => {
+    searchInputSec.style.display = 'flex';
+    body.style.overflow = 'hidden';
+});
 
-const closeSearch = document.querySelector('.close-search')
+const closeSearch = document.querySelector('.search-back-btn');
+closeSearch.addEventListener('click', () => {
+    searchInputSec.style.display = 'none';
+    body.style.overflow = 'auto';
+});
 
+/**
+ * Debounce function
+ */
+function debounce(func, delay) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+}
 
+/**
+ * Search logic with debouncing
+ */
+const searchInput = document.querySelector('.search-input input');
+
+function performSearch(query) {
+    console.log(query);
+    // Implement search logic here
+}
+
+const debouncedSearch = debounce(() => performSearch(searchInput.value), 500);
+
+searchInput.addEventListener('input', debouncedSearch);
 
 
 
