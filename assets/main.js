@@ -347,7 +347,8 @@ const header = document.querySelector('header')
 
 searchBtn.addEventListener('click', ()=>{
     searchInputSec.style.display = 'block'
-    header.style.display = 'none'
+    body.style.overflow = 'hidden'
+    // header.style.display = 'none'
 })
 
 const closeSearch = document.querySelector('.close-search')
@@ -360,6 +361,7 @@ const closeSearch = document.querySelector('.close-search')
 /**
  * Filter modal
  */
+
 var filterModal = new bootstrap.Modal(document.getElementById('filterModal'), {
     keyboard: false
 })

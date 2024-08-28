@@ -101,11 +101,13 @@ main{
 }
 
 /* -------------------------------------- */
+
 /* search div when click search button */
+
 .search-input-section{
     display: flex;
     align-items: center;
-    position: relative;
+    position: absolute;
     width: 100%;
     z-index: 10000;
     height: 100vh;
