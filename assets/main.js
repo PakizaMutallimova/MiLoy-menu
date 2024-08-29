@@ -38,7 +38,7 @@ const model = {
         },
         {
             "categoryId": 0,
-            "name": "Cheese pancakes with strawberry jam",
+            "name": "Cheese pancakes with jam",
             "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
             "description": "Fresh cottage cheese pancakes with strawberry jam and sour cream",
             "weight": "150 g",
@@ -331,7 +331,6 @@ checkedİnputs.forEach(checkbox => {
         document.querySelectorAll('.dropdown-item input[type="checkbox"]:checked').forEach(checkedItem => {
             selectedItems.push(checkedItem.value);
         });
-        console.log(selectedItems);
         allergyDropdown.innerText = selectedItems.join(', ');
     });
 });
@@ -354,6 +353,8 @@ const closeSearch = document.querySelector('.search-back-btn');
 closeSearch.addEventListener('click', () => {
     searchInputSec.style.display = 'none';
     body.style.overflow = 'auto';
+    searchInput.value = '';
+    document.querySelector('.search-result').innerHTML = '';
 });
 
 /**
@@ -372,14 +373,55 @@ function debounce(func, delay) {
  */
 const searchInput = document.querySelector('.search-input input');
 
-function performSearch(query) {
-    console.log(query);
-    // Implement search logic here
+function performSearch(event) {
+    const searchTerm = event.toLowerCase();
+    const searchResultsDiv = document.querySelector('.search-result');
+
+    if (searchTerm === '') {
+        // Clear the search results if the search term is empty
+        searchResultsDiv.innerHTML = '';
+        return;
+    }
+
+    let searchResults = items.filter(item => item.name.toLowerCase().includes(searchTerm)).map(item => {
+        return `
+        <div class="search-result-item">
+            <div class="entire-card"></div>
+            <img src="${item.image}" alt="">
+            <div class="search-result-item-info">
+                <h5 class="fw-bold">${item.name}</h5>
+                <p class="text-muted">${item.price} ₼</p>
+            </div>
+        </div>`;
+    });
+    searchResultsDiv.innerHTML = searchResults.join('');
+    searchResults = [];
 }
-
 const debouncedSearch = debounce(() => performSearch(searchInput.value), 500);
-
 searchInput.addEventListener('input', debouncedSearch);
+//----------------------------------------------------------------------
+
+window.addEventListener('click', (e) => {
+    // console.log(e.target);
+    if (e.target.classList.contains('entire-card')) {
+        body.style.overflow = "hidden"
+        seeMoreBack.style.display = "block"
+        console.log(e.target.parentElement);
+        
+        // seeMoreIMG.src = eTar.parentElement.parentElement.lastElementChild.src
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 
