@@ -138,11 +138,8 @@ const coffeeSizeData = [
     }
 ]
 
-
-
 const slider = document.querySelector('.slider')
 const { categories, items } = model
-
 
 /* ------------------------------------------------------------------ */
 /*                      Fetching category data                        */
@@ -233,8 +230,7 @@ const menuData = categories.map(category => `
                         ${coffeeSizeData.map((sizes) => {if (sizes.name) {return `<img src="./assets/images/${sizes.name.toLocaleUpperCase()}.svg" alt="">`}}).join("")}
                     </div>
                     <div class="product-price d-flex">
-                        <p class="mb-0 text-muted">7.00 ₼</p>
-                        ${product.discount ? `<p class="mb-0 text-muted"><del>${product.discount} ₼</del></p>` : ""}
+                        ${window.addEventListener('click', e => coffeeSizeData.map(svg => e.target.src.includes("/" + svg.name.toLocaleUpperCase()) && console.log(product.discount + svgValue), (e.target.classList.add('active-size'), `<p class="mb-0 text-muted">${product.price + svg.name.toLocaleUpperCase()} ₼</p>${product.discount + svg.name.toLocaleUpperCase() ? `<p class="mb-0 text-muted"><del>${product.discount + svg.name.toLocaleUpperCase()} ₼</del></p>` : ""}`)))}
                     </div>
                 </div>
                 <img src="${product.image}" class="img img-fluid rounded" style="width: 100px; height: 80px;" alt="Espresso double">
@@ -247,17 +243,26 @@ const menuData = categories.map(category => `
 
 menuCards.innerHTML = menuData
 
-window.addEventListener('click', (e) => {
-    if (e.target.src == "./assets/images/S.svg" ) {
-        // console.log(e.target);
-        alert("hello")
-        
-    }
-})
- 
+// window.addEventListener('click', (e) => {
+//     var etarget = e.target;
+//     coffeeSizeData.map(svg => {
+//         svgValue = svg.name.toLocaleUpperCase();        
+//         if(etarget.src.includes("/" + svgValue)){
+//             // console.log(etarget.classList);
+//             etarget.classList.add('active-size')
+//             `<div class="product-price d-flex">
+//                 <p class="mb-0 text-muted">${product.price + svgValue} ₼</p>
+//                 ${product.discount+svgValue ? `<p class="mb-0 text-muted"><del>${product.discount + svgValue} ₼</del></p>` : ""}
+//             </div>`
+//         }
+//     })
+// })
+
+
 const languageItem = document.querySelector('.language-item')
 const languageOptions = document.querySelector('.language-options')
 var clicked = true
+
 languageItem.addEventListener('click', ()=> {
     if (clicked == true) {
         languageOptions.style.display = 'block'
@@ -440,11 +445,10 @@ searchInput.addEventListener('input', debouncedSearch);
 //----------------------------------------------------------------------
 
 window.addEventListener('click', (e) => {
-    // console.log(e.target);
     if (e.target.classList.contains('entire-card')) {
         body.style.overflow = "hidden"
         seeMoreBack.style.display = "block"
-        console.log(e.target.parentElement);
+        // console.log(e.target.parentElement);
         
         // seeMoreIMG.src = eTar.parentElement.parentElement.lastElementChild.src
     }
