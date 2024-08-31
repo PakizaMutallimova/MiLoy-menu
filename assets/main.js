@@ -24,8 +24,12 @@ const model = {
             "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
             "description": "Fried eggs, bacon, toast, cherry tomatoes",
             "weight": "400 g",
-            "discount": "",
-            "price": "6.99"
+            "discountS": "5.59",
+            "discountM": "7.79",
+            "discountL": "10.00",
+            "priceS": "4.99",
+            "priceM": "6.99",
+            "priceL": "8.99"
         },
         {
             "categoryId": 0,
@@ -111,6 +115,31 @@ const model = {
     ]
 };
 
+const coffeeSizeData = [
+    {
+    "name": "xs",
+    "value": "10"
+    },
+    {
+    "name": "s",
+    "value": "12"
+    },
+    {
+    "name": "m",
+    "value": "14"
+    },
+    {
+    "name": "l",
+    "value": "16"
+    },
+    {
+    "name": "xl",
+    "value": "18"
+    }
+]
+
+
+
 const slider = document.querySelector('.slider')
 const { categories, items } = model
 
@@ -184,7 +213,6 @@ window.addEventListener('scroll', function() {
         navbar.classList.add('navbar-hidden');
     }
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    
 });
 
 
@@ -201,8 +229,13 @@ const menuData = categories.map(category => `
             <div class="card-content d-flex align-items-center">
                 <div class="ms-3">
                     <h5 class="product-name mb-0">${product.name}</h5>
-                    ${product.discount ? `<p class="mb-0 text-muted"><del>${product.discount} ₼</del></p>` : ""}
-                    <p class="mb-0 text-muted">${product.price} ₼</p>
+                    <div class="coffee-size d-flex">
+                        ${coffeeSizeData.map((sizes) => {if (sizes.name) {return `<img src="./assets/images/${sizes.name.toLocaleUpperCase()}.svg" alt="">`}}).join("")}
+                    </div>
+                    <div class="product-price d-flex">
+                        <p class="mb-0 text-muted">7.00 ₼</p>
+                        ${product.discount ? `<p class="mb-0 text-muted"><del>${product.discount} ₼</del></p>` : ""}
+                    </div>
                 </div>
                 <img src="${product.image}" class="img img-fluid rounded" style="width: 100px; height: 80px;" alt="Espresso double">
             </div>
@@ -214,9 +247,14 @@ const menuData = categories.map(category => `
 
 menuCards.innerHTML = menuData
 
-// ------------------------------------------------------------------
-/*                      To change language of page                   */
-
+window.addEventListener('click', (e) => {
+    if (e.target.src == "./assets/images/S.svg" ) {
+        // console.log(e.target);
+        alert("hello")
+        
+    }
+})
+ 
 const languageItem = document.querySelector('.language-item')
 const languageOptions = document.querySelector('.language-options')
 var clicked = true

@@ -105,14 +105,14 @@ main{
 /* search div when click search button */
 
 .search-input-section{
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     position: absolute;
     top: 0;
     width: 100%;
-    z-index: 10000;
+    z-index: 100;
     height: 100vh;
     background-color: white;
     padding: 40px;
@@ -380,6 +380,24 @@ main{
 
 .product-name{
     cursor: pointer;
+}
+
+.coffee-size{
+    gap: 15px;
+}
+
+.coffee-size img{
+    border-radius: 4.5px;
+    width: 25px;
+    height: 25px;
+}
+
+.product-price{
+    gap: 15px;
+}
+
+.product-price:last-child del{
+    color: rgb(150, 149, 149);
 }
 
 section h4{
