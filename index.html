@@ -115,13 +115,13 @@
                         <h5 class="fw-bold">Coffee type</h5>
                         <form>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="coffeeType" id="darkBrazil" checked>
+                                <input class="form-check-input" type="" name="coffeeType" id="darkBrazil">
                                 <label class="form-check-label d-flex justify-content-between" for="darkBrazil">
                                     Dark Brazil
                                     <span class="text-muted">1.50 ₼</span>
                                 </label>
                             </div>
-                            <div class="form-check">
+                            <!-- <div class="form-check">
                                 <input class="form-check-input" type="radio" name="coffeeType" id="decaf">
                                 <label class="form-check-label d-flex justify-content-between" for="decaf">
                                     Decaf
@@ -141,30 +141,25 @@
                                     Medium Ethiopia Lek.
                                     <span class="text-muted">0.70 ₼</span>
                                 </label>
-                            </div>
+                            </div> -->
                         </form>
                     </div>
-                </div>
-            </div>
-            <div class="menu-cards container p-0 my-5">
-                <div id="${product.categoryId}" class="card-item col-md-6 mb-4">
-                    <div class="card-content d-flex align-items-center">
-                        <div class="ms-3">
-                            <h5 class="product-name mb-0">name</h5>
-                            <div class="coffee-size d-flex">
-                                <img src="./assets/images/S.svg" alt="">
-                                <img src="./assets/images/M.svg" alt="">
-                                <img src="./assets/images/L.svg" alt="">
+                    <div class="size-place">
+                        <h5 class="fw-bold">Size</h5>
+                        <div class="size-card d-flex justify-content-between align-items-center">
+                            <div class="cup-description d-flex justify-content-start align-items-center">
+                                <img src="./assets/images/S.svg" width="30px" height="30px" alt="">
+                                <b>S</b>
+                                <span>230ml</span>
                             </div>
-                            <div class="product-price d-flex">
-                                <p class="mb-0 text-muted">7.00 ₼</p>
-                                <p class="mb-0 text-muted"><del>10 ₼</del></p>
+                            <div class="price-of-cup d-flex justify-content-start align-items-center">
+                                <span>1.50 ₼</span>
                             </div>
                         </div>
-                        <img src="${product.image}" class="img img-fluid rounded" style="width: 100px; height: 80px;" alt="Espresso double">
                     </div>
                 </div>
             </div>
+            <div class="menu-cards container p-0 my-5"></div>
         </main>
     </div>
 

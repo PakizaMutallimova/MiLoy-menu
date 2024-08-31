@@ -24,12 +24,8 @@ const model = {
             "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
             "description": "Fried eggs, bacon, toast, cherry tomatoes",
             "weight": "400 g",
-            "discountS": "5.59",
-            "discountM": "7.79",
-            "discountL": "10.00",
-            "priceS": "4.99",
-            "priceM": "6.99",
-            "priceL": "8.99"
+            "discount": "8.19",
+            "price": "6.99"
         },
         {
             "categoryId": 0,
@@ -226,11 +222,9 @@ const menuData = categories.map(category => `
             <div class="card-content d-flex align-items-center">
                 <div class="ms-3">
                     <h5 class="product-name mb-0">${product.name}</h5>
-                    <div class="coffee-size d-flex">
-                        ${coffeeSizeData.map((sizes) => {if (sizes.name) {return `<img src="./assets/images/${sizes.name.toLocaleUpperCase()}.svg" alt="">`}}).join("")}
-                    </div>
                     <div class="product-price d-flex">
-                        ${window.addEventListener('click', e => coffeeSizeData.map(svg => e.target.src.includes("/" + svg.name.toLocaleUpperCase()) && console.log(product.discount + svgValue), (e.target.classList.add('active-size'), `<p class="mb-0 text-muted">${product.price + svg.name.toLocaleUpperCase()} ₼</p>${product.discount + svg.name.toLocaleUpperCase() ? `<p class="mb-0 text-muted"><del>${product.discount + svg.name.toLocaleUpperCase()} ₼</del></p>` : ""}`)))}
+                        <p class="mb-0 text-muted">${product.price} ₼</p>
+                        ${product.discount ? `<p class="mb-0 text-muted"><del>${product.discount} ₼</del></p>` : ""}
                     </div>
                 </div>
                 <img src="${product.image}" class="img img-fluid rounded" style="width: 100px; height: 80px;" alt="Espresso double">
@@ -243,6 +237,10 @@ const menuData = categories.map(category => `
 
 menuCards.innerHTML = menuData
 
+
+{/* <div class="coffee-size d-flex">
+    ${coffeeSizeData.map((sizes) => {if (sizes.name) {return `<img src="./assets/images/${sizes.name.toLocaleUpperCase()}.svg" alt="">`}}).join("")}
+</div> */}
 // window.addEventListener('click', (e) => {
 //     var etarget = e.target;
 //     coffeeSizeData.map(svg => {
@@ -252,8 +250,11 @@ menuCards.innerHTML = menuData
 //             etarget.classList.add('active-size')
 //             `<div class="product-price d-flex">
 //                 <p class="mb-0 text-muted">${product.price + svgValue} ₼</p>
-//                 ${product.discount+svgValue ? `<p class="mb-0 text-muted"><del>${product.discount + svgValue} ₼</del></p>` : ""}
+//                 ${product.discount+svgValue ? `<p class="mb-0 text-muted"><del>${product.discount + sv} ₼</del></p>` : ""}
 //             </div>`
+//         }
+//         else{
+
 //         }
 //     })
 // })

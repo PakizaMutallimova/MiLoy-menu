@@ -404,6 +404,7 @@ main{
     border: 1px solid rgba(59,130,246);
     /* background-color: red; */
 }
+
 section h4{
     width: 100%;
     border: 1px solid rgb(227, 226, 226);
@@ -432,7 +433,7 @@ section h4{
 
 .see-more-back{
     position: fixed;
-    display: none;
+    display: block;
     top: 0;
     left: 0;
     z-index: 100;
@@ -481,6 +482,25 @@ section h4{
     display: flex;
     flex-direction: column;
     padding: 1rem;
+}
+
+.size-card{
+    border-top: #ccc 1px solid;
+    width: 90%;
+    margin: 15px;
+}
+
+.size-place:last-child{
+    border-bottom: #ccc 1px solid;
+
+}
+
+.size-place .cup-description{
+    gap: 15px;
+}
+
+.cup-description b{
+    font-size: 20px;
 }
 
 form .form-check {
