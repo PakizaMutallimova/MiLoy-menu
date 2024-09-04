@@ -238,9 +238,7 @@ const menuData = categories.map(category => `
 menuCards.innerHTML = menuData
 
 
-{/* <div class="coffee-size d-flex">
-    ${coffeeSizeData.map((sizes) => {if (sizes.name) {return `<img src="./assets/images/${sizes.name.toLocaleUpperCase()}.svg" alt="">`}}).join("")}
-</div> */}
+
 // window.addEventListener('click', (e) => {
 //     var etarget = e.target;
 //     coffeeSizeData.map(svg => {
@@ -259,6 +257,26 @@ menuCards.innerHTML = menuData
 //     })
 // })
 
+const fetchingSizeData = coffeeSizeData.map(svg => {
+    console.log(svg);
+    return `
+    <div class="size-card d-flex justify-content-between align-items-center">
+        <div class="cup-description d-flex justify-content-start align-items-center">
+            <img src="./assets/images/${svg.name}.svg" width="30px" height="30px" alt="">
+            <b>${svg.name.toLocaleUpperCase()}</b>
+            <span>230ml</span>
+        </div>
+        <div class="price-of-cup d-flex justify-content-start align-items-center">
+            <span>3.99 ₼</span>
+        </div>
+    </div>`
+})
+
+const sizePlace = document.querySelector('.size-place')
+sizePlace.innerHTML += fetchingSizeData.join('')
+console.log(sizePlace.innerHTML);
+
+// ------------------------------------------------------------------
 
 const languageItem = document.querySelector('.language-item')
 const languageOptions = document.querySelector('.language-options')
