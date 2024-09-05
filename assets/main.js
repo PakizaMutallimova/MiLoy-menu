@@ -220,6 +220,7 @@ const menuData = categories.map(category => `
         ${items.map(product => category.id == product.categoryId ? `
         <div id="${product.categoryId}" class="card-item col-md-6 mb-4">
             <div class="card-content d-flex align-items-center">
+                <div class="entire-card"></div>
                 <div class="ms-3">
                     <h5 class="product-name mb-0">${product.name}</h5>
                     <div class="product-price d-flex">
@@ -258,7 +259,6 @@ menuCards.innerHTML = menuData
 // })
 
 const fetchingSizeData = coffeeSizeData.map(svg => {
-    console.log(svg);
     return `
     <div class="size-card d-flex justify-content-between align-items-center">
         <div class="cup-description d-flex justify-content-start align-items-center">
@@ -274,7 +274,7 @@ const fetchingSizeData = coffeeSizeData.map(svg => {
 
 const sizePlace = document.querySelector('.size-place')
 sizePlace.innerHTML += fetchingSizeData.join('')
-console.log(sizePlace.innerHTML);
+
 
 // ------------------------------------------------------------------
 
@@ -309,16 +309,12 @@ const seeMoreIMG = seeMoreImage.querySelector('img')
  */
 document.addEventListener('click', (e)=>{
     eTar = e.target
-    // have to add card-content class to the parent element of the product name
-    if (eTar.classList.contains("product-name")) {
+    if (eTar.classList.contains("entire-card")) {
+        const cardContent = eTar.parentElement; 
+        const imgElementSrc = cardContent.querySelector('img').src; 
         body.style.overflow = "hidden"
         seeMoreBack.style.display = "block"
-        seeMoreIMG.src = eTar.parentElement.parentElement.lastElementChild.src
-    }
-    if (eTar.classList.contains("img")) {
-        body.style.overflow = "hidden"
-        seeMoreBack.style.display = "block"
-        seeMoreIMG.src = eTar.src
+        seeMoreIMG.src = imgElementSrc
     }
     else if (eTar.classList.contains("see-more-back")) {
         body.style.overflow = "auto"
@@ -467,22 +463,8 @@ window.addEventListener('click', (e) => {
     if (e.target.classList.contains('entire-card')) {
         body.style.overflow = "hidden"
         seeMoreBack.style.display = "block"
-        // console.log(e.target.parentElement);
-        
-        // seeMoreIMG.src = eTar.parentElement.parentElement.lastElementChild.src
     }
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 

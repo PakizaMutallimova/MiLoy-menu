@@ -105,12 +105,13 @@ main{
 /* search div when click search button */
 
 .search-input-section{
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    position: absolute;
+    position: fixed;
     top: 0;
+    bottom: 0;
     width: 100%;
     z-index: 100;
     height: 100vh;
@@ -416,6 +417,7 @@ section h4{
 .card-item .card-content{
     box-shadow: 10, 10, 20px black;
     justify-content: space-between;
+    position: relative;
 }
 
 .image-zoom{
@@ -433,7 +435,7 @@ section h4{
 
 .see-more-back{
     position: fixed;
-    display: block;
+    display: none;
     top: 0;
     left: 0;
     z-index: 100;
@@ -463,7 +465,9 @@ section h4{
     width: 100%;
     max-height: 300px;
     overflow: hidden;
+    object-fit: cover;
     text-align: center;
+    object-position: center;
     margin: 0;
     padding: 0;
 }
@@ -605,6 +609,18 @@ form .form-check:last-child{
 }
 
 @media screen and (max-width: 470px) {
+    header{
+        background-color: yellow;
+    }
+    .navbar .container{
+        padding: 0;
+        background-color: red;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .navbar{
+        position: absolute;
+    }
     .search-result-item{
         width: 85%;
         margin-right: 0;
@@ -614,5 +630,10 @@ form .form-check:last-child{
     }
     .search-result-item p{
         font-size: 10px;
+    }
+    .slider-item{
+        font-size: 13px;
+        min-width: min-content;
+        height: 30px;
     }
 }
