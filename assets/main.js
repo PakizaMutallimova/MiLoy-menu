@@ -140,14 +140,77 @@ const { categories, items } = model
 /* ------------------------------------------------------------------ */
 /*                      Fetching category data                        */
 const categoryData = categories.map(cat => {
-    return `
-        <a id="" class="slider-item " href="#${cat.id}">${cat.name}</a>`
-}
-).join('')
+    return `<a id="slider-${cat.id}" class="slider-item" href="#${cat.id}">${cat.name}</a>`;
+}).join('');
 
 slider.innerHTML = categoryData
+
+const sliderItems = document.querySelectorAll('.slider-item')
+
+slider.addEventListener('click', (e) => {    
+    sliderItems.forEach(item =>
+    
+        e.target.id == item.id ? item.classList.add("active") : item.classList.remove("active"));
+});
+
+/* ------------------------------------------------------------------ */
+
+const sections = categories.map(cat => document.getElementById("slider-" + cat.id))
+
+
+// const observer = new IntersectionObserver((entries) => {
+//   entries.forEach(entry => {
+//     const sliderItem = document.querySelector(`#${entry.target.id}`);
+//     console.log(entry.rootBounds.top);
+
+//     // Check if the current section is intersecting
+//     if (entry.isIntersecting) {
+//       sliderItems.forEach(item => item.classList.remove('active'));
+//       sliderItem.classList.add('active');
+//     } 
+//   })
+//   console.log(entries[0].rootBounds.top);
+  
+// }, {
+//   threshold: 1
+// });
+
+// Observe each section
+
+// sections.forEach(section => {
+//     observer.observe(section);
+// });
+
+
+// const sectionOfCategoty = document.querySelectorAll('section')
+
+window.addEventListener('scroll', (e) => {
+    e.preventDefault();
+    console.log(pageYOffset);
+    
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetWidth;
+        // console.log(sectionTop);
+        
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - sectionHeight / 3) {
+            current = section.id;
+        }
+    });
+
+    sliderItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.id === current) {
+            item.classList.add('active');
+        }
+    });
+});
+
+
 // -------------------------------------------------------------------
 /*                          Popup image                             */
+
 const closeBtn = document.querySelector('.closebtn')
 const popup = document.querySelector('.popup-image')
 const popupImage = document.querySelector('.popup-image img')
@@ -170,6 +233,7 @@ document.addEventListener('click', (e) => {
         popupImage.src = target.parentElement.firstElementChild.src
     }
 })
+
 // -----------------------------------------------------------------
 
 const darkMode = document.querySelector('.dark')
@@ -207,7 +271,6 @@ window.addEventListener('scroll', function() {
     }
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
-
 
 // ------------------------------------------------------------------
 /*                        Fetching menu data                       */
