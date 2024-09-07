@@ -277,7 +277,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ------------------------------------------------------------------//
-//                 adding Cup size data to seeMorePopup                  //
+//              adding Cup size data to seeMorePopup                 //
 
 const fetchingSizeData = coffeeSizeData.map(svg => {
     return `
@@ -327,7 +327,9 @@ languageOptionItem[0].addEventListener('click', ()=>{
 const body = document.querySelector('body')
 const seeMoreImage = document.querySelector('.see-more-image')
 const seeMoreBack = document.querySelector('.see-more-back')
-const seeMoreIMG = seeMoreImage.querySelector('img')
+const seeMoreIMG = document.querySelector('.see-more-image')
+// console.log(seeMoreIMG);
+
 
 document.addEventListener('click', (e)=>{
     eTar = e.target
@@ -336,7 +338,9 @@ document.addEventListener('click', (e)=>{
         const imgElementSrc = cardContent.querySelector('img').src; 
         body.style.overflow = "hidden"
         seeMoreBack.style.display = "block"
-        seeMoreIMG.src = imgElementSrc
+        seeMoreIMG.style.backgroundImage = `url("${imgElementSrc}")`;
+        console.log(seeMoreIMG);
+        
     }
     else if (eTar.classList.contains("see-more-back")) {
         body.style.overflow = "auto"
@@ -457,7 +461,6 @@ function performSearch(event) {
     const searchResultsDiv = document.querySelector('.search-result');
 
     if (searchTerm === '') {
-        // Clear the search results if the search term is empty
         searchResultsDiv.innerHTML = '';
         return;
     }

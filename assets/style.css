@@ -112,6 +112,8 @@ main{
     position: fixed;
     top: 0;
     bottom: 0;
+    left: 0;
+    right: 0;
     width: 100%;
     z-index: 100;
     height: 100vh;
@@ -203,6 +205,10 @@ main{
     transition: .3s;
     box-shadow: 0 0 4px rgba(59,130,246,.5);
     position: relative;
+}
+
+.search-result-item-info p{
+    text-align: right;
 }
 
 .entire-card{
@@ -459,7 +465,7 @@ section h4{
     left: 50%;
     transform: translate(-50%, -50%);
     overflow-y: scroll;
-    width: 500px;
+    width: 50%;
     height: 100vh;
     background-color: white;
     cursor: default;
@@ -551,8 +557,6 @@ form .form-check:last-child{
 
 
 
-
-
 /* --------------------------------------- */
 
 .dropdown-toggle {
@@ -589,16 +593,7 @@ form .form-check:last-child{
     margin-right: 10px;
 }
 
-
-
-
-/* 
-@media screen and (max-width: 480px) {
-    .popup-image img {
-        width: 280px;
-        height: 300px;
-    }
-} */
+/* --------------------------------------- */
 
 @media screen and (max-width: 768px) {
     .search-result{
@@ -612,6 +607,19 @@ form .form-check:last-child{
     .search-result-item h5{
         font-size: 18px;
     }
+    #navbar{
+        padding: 0;
+    }
+    .see-more-popup{
+        width: 70%;
+    }
+    .see-more-image{
+        max-height: 200px;
+    }
+    .see-more-image img{
+        width: 100%;
+        height: auto;
+    }
 }
 
 @media screen and (max-width: 470px) {
@@ -620,16 +628,8 @@ form .form-check:last-child{
     }
     .navbar .container{
         padding: 0;
-        background-color: red;
         padding-left: 0;
         padding-right: 0;
-    }
-    .navbar{
-        position: absolute;
-        /* padding: 0; */
-    }
-    #navbar{
-        padding: 10px;
     }
     .search-result-item{
         width: 85%;
@@ -649,5 +649,35 @@ form .form-check:last-child{
     .popup-image img {
         width: 280px;
         height: 300px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .search-input-section{
+        padding: 10px;
+    }
+    .search-result-item{
+        width: 80%;
+        margin-right: 0;
+        overflow: hidden;
+    }
+    .search-result-item h5{
+        font-size: 12px;
+    }
+    .search-result-item p{
+        font-size: 8px;
+    }
+    .slider-item{
+        font-size: 12px;
+        min-width: min-content;
+        height: 30px;
+    }
+    .popup-image img {
+        width: 250px;
+        height: 270px;
+    }
+    .search-result-item img{
+        width: 60px;
+        height: 70px;
     }
 }
