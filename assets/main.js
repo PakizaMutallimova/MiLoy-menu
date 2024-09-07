@@ -134,7 +134,12 @@ const coffeeSizeData = [
     }
 ]
 
+const coffeeData = JSON.parse("{\"categories\":[{\"id\":0,\"name\":\"BREAKFASTS (8 AM - 10 AM)\"}],\"items\":[{\"categoryId\":0,\"name\":\"Catfish on pumpkin puree\",\"image\":\"https://eu2.contabostorage.com/3f9b49d682d34ec79a0010ab121089ca:common-menu/1083/items/1cee8973-83d2-4a4d-9199-635fe6bfae97.png\",\"description\":\"Catfish fillet baked with young potatoes. Served with salad and pumpkin puree\",\"weight\":\"150\",\"discount\":\"3\",\"price\":\"12\",\"specials\":[{\"halal\":true},{\"kosher\":false},{\"vegetarian\":false},{\"vegan\":false},{\"hot\":false},{\"gluten\":false}]}]}")
+// console.log(coffeeData);
+
+
 const slider = document.querySelector('.slider')
+const menuCards = document.querySelector('.menu-cards')
 const { categories, items } = model
 
 /* ------------------------------------------------------------------ */
@@ -147,70 +152,16 @@ slider.innerHTML = categoryData
 
 const sliderItems = document.querySelectorAll('.slider-item')
 
+// ------------------------------------------------------------------- //
+//                      Slider active class                           //
 slider.addEventListener('click', (e) => {    
     sliderItems.forEach(item =>
-    
         e.target.id == item.id ? item.classList.add("active") : item.classList.remove("active"));
-});
-
-/* ------------------------------------------------------------------ */
-
-const sections = categories.map(cat => document.getElementById("slider-" + cat.id))
-
-
-// const observer = new IntersectionObserver((entries) => {
-//   entries.forEach(entry => {
-//     const sliderItem = document.querySelector(`#${entry.target.id}`);
-//     console.log(entry.rootBounds.top);
-
-//     // Check if the current section is intersecting
-//     if (entry.isIntersecting) {
-//       sliderItems.forEach(item => item.classList.remove('active'));
-//       sliderItem.classList.add('active');
-//     } 
-//   })
-//   console.log(entries[0].rootBounds.top);
-  
-// }, {
-//   threshold: 1
-// });
-
-// Observe each section
-
-// sections.forEach(section => {
-//     observer.observe(section);
-// });
-
-
-// const sectionOfCategoty = document.querySelectorAll('section')
-
-window.addEventListener('scroll', (e) => {
-    e.preventDefault();
-    console.log(pageYOffset);
-    
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetWidth;
-        // console.log(sectionTop);
-        
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - sectionHeight / 3) {
-            current = section.id;
-        }
-    });
-
-    sliderItems.forEach(item => {
-        item.classList.remove('active');
-        if (item.id === current) {
-            item.classList.add('active');
-        }
-    });
 });
 
 
 // -------------------------------------------------------------------
 /*                          Popup image                             */
-
 const closeBtn = document.querySelector('.closebtn')
 const popup = document.querySelector('.popup-image')
 const popupImage = document.querySelector('.popup-image img')
@@ -223,8 +174,6 @@ function displayNone() {
 popup.addEventListener('click', displayNone)
 closeBtn.addEventListener('click', displayNone)
 
-
-
 document.addEventListener('click', (e) => {
     const target = e.target
     if (target.classList.contains('product-image') || target.classList.contains('image-zoom')) {
@@ -235,7 +184,7 @@ document.addEventListener('click', (e) => {
 })
 
 // -----------------------------------------------------------------
-
+/*                      Dark and light mode                        */
 const darkMode = document.querySelector('.dark')
 const lightMode = document.querySelector('.light')
 
@@ -250,6 +199,7 @@ lightMode.addEventListener('click', () => {
     darkMode.style.display = 'block'
     lightMode.style.display = 'none'
 })
+
 
 // ------------------------------------------------------------------
 //             Scrolling up and down navbar
@@ -274,7 +224,6 @@ window.addEventListener('scroll', function() {
 
 // ------------------------------------------------------------------
 /*                        Fetching menu data                       */
-const menuCards = document.querySelector('.menu-cards')
 
 const menuData = categories.map(category => `
     <section id=${category.id} class="">
@@ -301,25 +250,34 @@ const menuData = categories.map(category => `
 
 menuCards.innerHTML = menuData
 
+// ------------------------------------------------------------------//
+//              to add active class with scrolling                   //
 
+window.addEventListener('scroll', () => {
+    const sectionHeadings = menuCards.querySelectorAll('section');
+    const category = document.querySelectorAll('.slider-item');
+    
+    const options = {
+        threshold: 0.5
+    }
 
-// window.addEventListener('click', (e) => {
-//     var etarget = e.target;
-//     coffeeSizeData.map(svg => {
-//         svgValue = svg.name.toLocaleUpperCase();        
-//         if(etarget.src.includes("/" + svgValue)){
-//             // console.log(etarget.classList);
-//             etarget.classList.add('active-size')
-//             `<div class="product-price d-flex">
-//                 <p class="mb-0 text-muted">${product.price + svgValue} ₼</p>
-//                 ${product.discount+svgValue ? `<p class="mb-0 text-muted"><del>${product.discount + sv} ₼</del></p>` : ""}
-//             </div>`
-//         }
-//         else{
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            
+            if (entry.isIntersecting) {
+                category.forEach(section => section.classList.remove('active'));
 
-//         }
-//     })
-// })
+                const activeLink = document.querySelector(`a[href="#${entry.target.id}"]`);
+                activeLink.classList.add('active');
+            }
+        });
+    }, options);
+
+    sectionHeadings.forEach(heading => observer.observe(heading));
+});
+
+// ------------------------------------------------------------------//
+//                 adding Cup size data to seeMorePopup                  //
 
 const fetchingSizeData = coffeeSizeData.map(svg => {
     return `
@@ -358,18 +316,19 @@ languageItem.addEventListener('click', ()=> {
 
 const languageOptionItem = languageOptions.querySelectorAll('.language-item')
 languageOptionItem[0].addEventListener('click', ()=>{
+    // languageItem.innerHTML = 'EN'
+    // languageOptions.style.display = 'none'
 })
 
+
 // ----------------------------------------------------------------------
+//                 to open seeMorePopup when click on card               //
 
 const body = document.querySelector('body')
 const seeMoreImage = document.querySelector('.see-more-image')
 const seeMoreBack = document.querySelector('.see-more-back')
 const seeMoreIMG = seeMoreImage.querySelector('img')
 
-/**
- * 
- */
 document.addEventListener('click', (e)=>{
     eTar = e.target
     if (eTar.classList.contains("entire-card")) {
@@ -402,7 +361,6 @@ document.querySelectorAll('.filter-btn').forEach(button => {
 const resetFilter = document.querySelector('.reset')
 const checkedİnputs = document.querySelectorAll('.dropdown-item input[type="checkbox"]')
 const allergyDropdown = document.getElementById('allergyDropdown')
-
 
 resetFilter.addEventListener('click', ()=>{
     document.querySelectorAll('.filter-btn').forEach(button => {
@@ -528,8 +486,6 @@ window.addEventListener('click', (e) => {
         seeMoreBack.style.display = "block"
     }
 });
-
-
 
 // ----------------------------------------------------------------------
 /**

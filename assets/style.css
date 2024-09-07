@@ -592,13 +592,13 @@ form .form-check:last-child{
 
 
 
-
+/* 
 @media screen and (max-width: 480px) {
     .popup-image img {
         width: 280px;
         height: 300px;
     }
-}
+} */
 
 @media screen and (max-width: 768px) {
     .search-result{
@@ -626,6 +626,10 @@ form .form-check:last-child{
     }
     .navbar{
         position: absolute;
+        /* padding: 0; */
+    }
+    #navbar{
+        padding: 10px;
     }
     .search-result-item{
         width: 85%;
@@ -641,5 +645,9 @@ form .form-check:last-child{
         font-size: 13px;
         min-width: min-content;
         height: 30px;
+    }
+    .popup-image img {
+        width: 280px;
+        height: 300px;
     }
 }
