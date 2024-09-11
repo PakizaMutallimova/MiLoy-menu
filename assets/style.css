@@ -475,11 +475,13 @@ section h4{
 
 .see-more-image {
     width: 100%;
-    max-height: 300px;
+    min-height: 350px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     overflow: hidden;
     object-fit: cover;
     text-align: center;
-    object-position: center;
     margin: 0;
     padding: 0;
 }

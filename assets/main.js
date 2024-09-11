@@ -134,10 +134,6 @@ const coffeeSizeData = [
     }
 ]
 
-const coffeeData = JSON.parse("{\"categories\":[{\"id\":0,\"name\":\"BREAKFASTS (8 AM - 10 AM)\"}],\"items\":[{\"categoryId\":0,\"name\":\"Catfish on pumpkin puree\",\"image\":\"https://eu2.contabostorage.com/3f9b49d682d34ec79a0010ab121089ca:common-menu/1083/items/1cee8973-83d2-4a4d-9199-635fe6bfae97.png\",\"description\":\"Catfish fillet baked with young potatoes. Served with salad and pumpkin puree\",\"weight\":\"150\",\"discount\":\"3\",\"price\":\"12\",\"specials\":[{\"halal\":true},{\"kosher\":false},{\"vegetarian\":false},{\"vegan\":false},{\"hot\":false},{\"gluten\":false}]}]}")
-// console.log(coffeeData);
-
-
 const slider = document.querySelector('.slider')
 const menuCards = document.querySelector('.menu-cards')
 const { categories, items } = model
@@ -179,7 +175,7 @@ document.addEventListener('click', (e) => {
     if (target.classList.contains('product-image') || target.classList.contains('image-zoom')) {
         popup.style.display = 'block';
         popupImage.src = target.src
-        popupImage.src = target.parentElement.firstElementChild.src
+        popupImage.src = target.style.backgroundImage.slice(5, -2)
     }
 })
 
@@ -328,7 +324,6 @@ const body = document.querySelector('body')
 const seeMoreImage = document.querySelector('.see-more-image')
 const seeMoreBack = document.querySelector('.see-more-back')
 const seeMoreIMG = document.querySelector('.see-more-image')
-// console.log(seeMoreIMG);
 
 
 document.addEventListener('click', (e)=>{
@@ -338,9 +333,7 @@ document.addEventListener('click', (e)=>{
         const imgElementSrc = cardContent.querySelector('img').src; 
         body.style.overflow = "hidden"
         seeMoreBack.style.display = "block"
-        seeMoreIMG.style.backgroundImage = `url("${imgElementSrc}")`;
-        console.log(seeMoreIMG);
-        
+        seeMoreIMG.style.backgroundImage = `url("${imgElementSrc}")`;        
     }
     else if (eTar.classList.contains("see-more-back")) {
         body.style.overflow = "auto"
@@ -379,12 +372,63 @@ resetFilter.addEventListener('click', ()=>{
 /**
  * Apply filter
  */
+
 const applyFilter = document.querySelector('.apply-filter')
+const coffeeData = JSON.parse("{\"categories\":[{\"id\":0,\"name\":\"BREAKFASTS (8 AM - 10 AM)\"}],\"items\":[{\"categoryId\":0,\"name\":\"Catfish on pumpkin puree\",\"image\":\"https://eu2.contabostorage.com/3f9b49d682d34ec79a0010ab121089ca:common-menu/1083/items/1cee8973-83d2-4a4d-9199-635fe6bfae97.png\",\"description\":\"Catfish fillet baked with young potatoes. Served with salad and pumpkin puree\",\"weight\":\"150\",\"discount\":\"3\",\"price\":\"12\",\"specials\":[{\"halal\":true},{\"kosher\":false},{\"vegetarian\":false},{\"vegan\":false},{\"hot\":false},{\"gluten\":false}]}]}")
+// console.log(coffeeData);
+
+// function applyFilterToMenuData(x) {
+//     const specials = coffeeData.items[0].specials.map(special => {
+//         return Object.keys(special).map(key => {
+//             return special[key] ? key : '';
+//         }).join('');
+//     }).join('');
+//     return specials
+// }
+// applyFilterToMenuData()
+
+
 applyFilter.addEventListener('click', ()=>{
-    // filterModal.hide()
-    // document.querySelectorAll('.filter-btn').forEach(button => {
-    //     button.classList.remove('active')
+    const  { categories, items} = coffeeData
+    document.querySelectorAll('.filter-btn').forEach(button => {
+        button.classList.remove('active')
+    })
+    // checkedİnputs.forEach(input => {
+    //     if (input.checed == false) {
+    //         allergyDropdown.innerText = 'Seçin'
+    //     }
     // })
+
+    const activeFilters = Array.from(document.querySelectorAll('.filter-btn.active')).map(button => button.dataset.filter);
+
+    const filteredItems = coffeeData.items.filter(item => {
+        return activeFilters.every(filter => item.specials.some(special => special[filter]));
+    });
+
+    const appliedFilterData = categories.map(category => `
+        <section id=${category.id} class="">
+          <h4 class="mb-4 py-2">${category.name}</h4>
+          <div class="row">
+            ${items.map(product => category.id == product.categoryId ? `
+            <div id="${product.categoryId}" class="card-item col-md-6 mb-4">
+                <div class="card-content d-flex align-items-center">
+                    <div class="entire-card"></div>
+                    <div class="ms-3">
+                        <h5 class="product-name mb-0">${product.name}</h5>
+                        <div class="product-price d-flex">
+                            <p class="mb-0 text-muted">${product.price} ₼</p>
+                            ${product.discount ? `<p class="mb-0 text-muted"><del>${product.discount} ₼</del></p>` : ""}
+                        </div>
+                    </div>
+                    <img src="${product.image}" class="img img-fluid rounded" style="width: 100px; height: 80px;" alt="">
+                </div>
+            </div>` : "").join("")}
+            </div>
+        </section>`
+    
+    ).join("")
+    
+    menuCards.innerHTML = appliedFilterData
 })
 
 // ----------------------------------------------------------------------
@@ -397,28 +441,89 @@ applyFilter.addEventListener('click', ()=>{
 /**
     * Dropdown with checkboxes
  */
-checkedİnputs.forEach(checkbox => {
-    checkbox.addEventListener('change', function() {
-        let selectedItems = [];
-        document.querySelectorAll('.dropdown-item input[type="checkbox"]:checked').forEach(checkedItem => {
-            selectedItems.push(checkedItem.value);
-        });
-        allergyDropdown.innerText = selectedItems.join(', ');
-    });
-});
 
-checkedİnputs.forEach(checkbox => {
-    checkbox.addEventListener('click', function(event) {
-        event.stopPropagation();
-        let selectedItems = [];
-        document.querySelectorAll('.dropdown-item input[type="checkbox"]:checked').forEach(checkedItem => {
-            selectedItems.push(checkedItem.value);
-        });
-        allergyDropdown.innerText = selectedItems.join(', ');
-    });
-});
+// function checked(addCheckedInput) {
+//     checkedİnputs.forEach(checkbox => {
+//         addCheckedInput = function() {
+//             if (checkbox.checked) {
+//                 // console.log(checkbox.value);
+//                 return checkbox.value
+//             }
+//         }        
+        
+//         checkbox.addEventListener('change', function() {
+//             let selectedItems = [];
+//             document.querySelectorAll('.dropdown-item input[type="checkbox"]:checked').forEach(checkedItem => {
+//                 selectedItems.push(checkedItem.value);
+//             });
+//             allergyDropdown.innerText = selectedItems.join(', ');
+//             if (selectedItems.length === 0) {
+//                 allergyDropdown.innerText = 'Seçin';
+//             }
+//         });
+//     });
+// }
+
+// console.log(checked(addCheckedInput));
+
+
+
+// checkedİnputs.forEach(checkbox => {
+//     checkbox.addEventListener('click', function(event) {
+//         event.stopPropagation();
+//         let selectedItems = [];
+//         document.querySelectorAll('.dropdown-item input[type="checkbox"]:checked').forEach(checkedItem => {
+//             selectedItems.push(checkedItem.value);
+//         });
+//         allergyDropdown.innerText = selectedItems.join(', ');
+//         if (selectedItems.length === 0) {
+//             allergyDropdown.innerText = 'Seçin';
+//         }
+//     });
+// });
 
 // ----------------------------------------------------------------------
+
+
+class CheckboxManager {
+    constructor(checkedInputs, dropdown) {
+        this.checkedInputs = checkedInputs;
+        this.dropdown = dropdown;
+    }
+
+    initialize() {
+        this.checkedInputs.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                this.updateDropdown();
+            });
+        });
+    }
+
+    updateDropdown() {
+        let selectedItems = this.getCheckedValues();
+        this.dropdown.innerText = selectedItems.join(', ');
+        if (selectedItems.length === 0) {
+            this.dropdown.innerText = 'Seçin';
+        }
+    }
+
+    getCheckedValues() {
+        let selectedItems = [];
+        document.querySelectorAll('.dropdown-item input[type="checkbox"]:checked').forEach(checkedItem => {
+            selectedItems.push(checkedItem.value);
+        });
+        return selectedItems;
+    }
+}
+
+const checkedInputs = document.querySelectorAll('.dropdown-item input[type="checkbox"]');
+const checkboxManager = new CheckboxManager(checkedInputs, allergyDropdown);
+checkboxManager.initialize();
+
+const valuseOfInput = checkboxManager.getCheckedValues()
+console.log(valuseOfInput);
+
+
 
 /**
  * Search input click
