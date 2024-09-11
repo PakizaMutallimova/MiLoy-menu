@@ -393,17 +393,14 @@ applyFilter.addEventListener('click', ()=>{
     document.querySelectorAll('.filter-btn').forEach(button => {
         button.classList.remove('active')
     })
-    // checkedİnputs.forEach(input => {
-    //     if (input.checed == false) {
-    //         allergyDropdown.innerText = 'Seçin'
-    //     }
-    // })
 
     const activeFilters = Array.from(document.querySelectorAll('.filter-btn.active')).map(button => button.dataset.filter);
 
     const filteredItems = coffeeData.items.filter(item => {
         return activeFilters.every(filter => item.specials.some(special => special[filter]));
     });
+    console.log(filteredItems);
+    
 
     const appliedFilterData = categories.map(category => `
         <section id=${category.id} class="">
