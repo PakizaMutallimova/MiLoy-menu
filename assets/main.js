@@ -375,7 +375,52 @@ resetFilter.addEventListener('click', ()=>{
 
 const applyFilter = document.querySelector('.apply-filter')
 const coffeeData = JSON.parse("{\"categories\":[{\"id\":0,\"name\":\"BREAKFASTS (8 AM - 10 AM)\"}],\"items\":[{\"categoryId\":0,\"name\":\"Catfish on pumpkin puree\",\"image\":\"https://eu2.contabostorage.com/3f9b49d682d34ec79a0010ab121089ca:common-menu/1083/items/1cee8973-83d2-4a4d-9199-635fe6bfae97.png\",\"description\":\"Catfish fillet baked with young potatoes. Served with salad and pumpkin puree\",\"weight\":\"150\",\"discount\":\"3\",\"price\":\"12\",\"specials\":[{\"halal\":true},{\"kosher\":false},{\"vegetarian\":false},{\"vegan\":false},{\"hot\":false},{\"gluten\":false}]}]}")
-// console.log(coffeeData);
+
+const newItem1 = {
+    categoryId: 0,
+    name: "tasty meal",
+    image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    description: "A tasty meal with sugar syrop, apple, banana, blabla",
+    weight: "200",
+    discount: "5",
+    price: "15",
+    specials: [
+        { halal: false },
+        { kosher: false },
+        { vegetarian: true },
+        { vegan: true },
+        { hot: false },
+        { gluten: false }
+    ]
+};
+
+const newItem2 = {
+    categoryId: 0,
+    name: "Meal for Kosher",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWS4LDoirxqwSv52CMVXh34qtrtXVnb7duoQ&s",
+    description: "A delicious salad with peanut, pineapple, x, y, and coconut",
+    weight: "250",
+    discount: "7",
+    price: "9",
+    specials: [
+        { halal: false },
+        { kosher: true },
+        { vegetarian: false },
+        { vegan: false },
+        { hot: false },
+        { gluten: false }
+    ]
+};
+
+const newcategory = {
+    id: 1,
+    name: "Salads"
+}
+coffeeData.items.push(newItem1, newItem2);
+coffeeData.categories.push(newcategory)
+
+console.log(coffeeData);
+
 
 // function applyFilterToMenuData(x) {
 //     const specials = coffeeData.items[0].specials.map(special => {
@@ -399,7 +444,6 @@ applyFilter.addEventListener('click', ()=>{
     const filteredItems = coffeeData.items.filter(item => {
         return activeFilters.every(filter => item.specials.some(special => special[filter]));
     });
-    console.log(filteredItems);
     
 
     const appliedFilterData = categories.map(category => `
@@ -518,8 +562,6 @@ const checkboxManager = new CheckboxManager(checkedInputs, allergyDropdown);
 checkboxManager.initialize();
 
 const valuseOfInput = checkboxManager.getCheckedValues()
-console.log(valuseOfInput);
-
 
 
 /**
