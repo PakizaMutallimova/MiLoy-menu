@@ -384,43 +384,78 @@ const newItem1 = {
     weight: "200",
     discount: "5",
     price: "15",
-    specials: [
-        { halal: false },
-        { kosher: false },
-        { vegetarian: true },
-        { vegan: true },
-        { hot: false },
-        { gluten: false }
-    ]
+    specials: {
+        halal: false,
+        kosher: false,
+        vegetarian: true,
+        vegan: true,
+        hot: false,
+        gluten: false
+    }
 };
 
 const newItem2 = {
-    categoryId: 0,
+    categoryId: 1,
     name: "Meal for Kosher",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWS4LDoirxqwSv52CMVXh34qtrtXVnb7duoQ&s",
     description: "A delicious salad with peanut, pineapple, x, y, and coconut",
     weight: "250",
     discount: "7",
     price: "9",
-    specials: [
-        { halal: false },
-        { kosher: true },
-        { vegetarian: false },
-        { vegan: false },
-        { hot: false },
-        { gluten: false }
-    ]
+    specials: {
+        halal: false,
+        kosher: true,
+        vegetarian: false,
+        vegan: false,
+        hot: false,
+        gluten: false
+    }
+};
+
+const newItem3 = {
+    categoryId: 0,
+    name: "Hot meal",
+    image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    description: "A tasty meal with sugar syrop, apple, banana, blabla",
+    weight: "200",
+    discount: "5",
+    price: "12",
+    specials: {
+        halal: false,
+        kosher: false,
+        vegetarian: false,
+        vegan: false,
+        hot: true,
+        gluten: false
+    }
+};
+
+const newItem4 = {
+    categoryId: 1,
+    name: "cookies gluten free",
+    image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    description: "A tasty meal with sugar syrop, apple, banana, blabla",
+    weight: "200",
+    discount: "5",
+    price: "15",
+    specials: {
+        halal: false,
+        kosher: false,
+        vegetarian: false,
+        vegan: false,
+        hot: false,
+        gluten: true
+    }
 };
 
 const newcategory = {
     id: 1,
     name: "Salads"
 }
-coffeeData.items.push(newItem1, newItem2);
+coffeeData.items.unshift(newItem1, newItem2, newItem3, newItem4);
+coffeeData.items.pop()
 coffeeData.categories.push(newcategory)
-
 console.log(coffeeData);
-
 
 // function applyFilterToMenuData(x) {
 //     const specials = coffeeData.items[0].specials.map(special => {
@@ -432,25 +467,32 @@ console.log(coffeeData);
 // }
 // applyFilterToMenuData()
 
-
 applyFilter.addEventListener('click', ()=>{
-    const  { categories, items} = coffeeData
-    document.querySelectorAll('.filter-btn').forEach(button => {
-        button.classList.remove('active')
-    })
+    const  { categories, items } = coffeeData
 
     const activeFilters = Array.from(document.querySelectorAll('.filter-btn.active')).map(button => button.dataset.filter);
-
-    const filteredItems = coffeeData.items.filter(item => {
-        return activeFilters.every(filter => item.specials.some(special => special[filter]));
-    });
+    console.log(activeFilters);
     
+    let newFiltered = [];
 
-    const appliedFilterData = categories.map(category => `
+    coffeeData.items.filter(item => {
+        activeFilters.map(filter => {
+            if (item.specials[filter.toLowerCase()] == true) {
+                if (!newFiltered.includes(item)) {
+                    newFiltered.push(item);
+                }
+            }
+        });        
+    });
+    console.log(newFiltered);
+    
+    const appliedFilterData = categories.map(category => {
+        return`
         <section id=${category.id} class="">
           <h4 class="mb-4 py-2">${category.name}</h4>
           <div class="row">
-            ${items.map(product => category.id == product.categoryId ? `
+            ${newFiltered.map(product => {
+                return category.id == product.categoryId ? `
             <div id="${product.categoryId}" class="card-item col-md-6 mb-4">
                 <div class="card-content d-flex align-items-center">
                     <div class="entire-card"></div>
@@ -463,13 +505,18 @@ applyFilter.addEventListener('click', ()=>{
                     </div>
                     <img src="${product.image}" class="img img-fluid rounded" style="width: 100px; height: 80px;" alt="">
                 </div>
-            </div>` : "").join("")}
+            </div>` : ""}).join("")}
             </div>
         </section>`
-    
-    ).join("")
+    }).join("")
+
+    // console.log(valuseOfInput);
     
     menuCards.innerHTML = appliedFilterData
+})
+
+document.querySelectorAll('.filter-btn').forEach(button => {
+    button.classList.remove('active')
 })
 
 // ----------------------------------------------------------------------
@@ -562,6 +609,9 @@ const checkboxManager = new CheckboxManager(checkedInputs, allergyDropdown);
 checkboxManager.initialize();
 
 const valuseOfInput = checkboxManager.getCheckedValues()
+
+// console.log(valuseOfInput);
+
 
 
 /**
