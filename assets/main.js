@@ -1,115 +1,115 @@
-const model = {
-    "categories": [
-        {
-            "id": 0,
-            "name": "BREAKFASTS"
-        },
-        {
-            "id": 1,
-            "name": "HOT MEALS"
-        },
-        {
-            "id": 2,
-            "name": "SALADS"
-        },
-        {
-            "id": 3,
-            "name": "DESERTS"
-        }
-    ],
-    "items": [
-        {
-            "categoryId": 0,
-            "name": "Full English breakfast",
-            "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
-            "description": "Fried eggs, bacon, toast, cherry tomatoes",
-            "weight": "400 g",
-            "discount": "8.19",
-            "price": "6.99"
-        },
-        {
-            "categoryId": 0,
-            "name": "Oatmeal",
-            "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
-            "description": "Oatmeal with seasonal berries and berry syrup",
-            "weight": "150 g",
-            "discount": "4",
-            "price": "3.25"
-        },
-        {
-            "categoryId": 0,
-            "name": "Cheese pancakes with jam",
-            "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
-            "description": "Fresh cottage cheese pancakes with strawberry jam and sour cream",
-            "weight": "150 g",
-            "discount": "",
-            "price": "4.6"
-        },
-        {
-            "categoryId": 0,
-            "name": "Avocado toast",
-            "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
-            "description": "Rye toast with avocado and boiled egg",
-            "weight": "70 g",
-            "discount": "3",
-            "price": "2.15"
-        },
-        {
-            "categoryId": 0,
-            "name": "Catfish on pumpkin puree",
-            "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
-            "description": "Catfish fillet baked with young potatoes. Served with salad and pumpkin puree",
-            "weight": "380 g",
-            "discount": "",
-            "price": "6.5"
-        },
-        {
-            "categoryId": 1,
-            "name": "\"Homemade\" dumplings",
-            "image": "https://dyj6gt4964deb.cloudfront.net/images/362243826136565.jpg",
-            "description": "Vareniki with mashed potatoes and fried chanterelles",
-            "weight": "250 g",
-            "discount": "5.7",
-            "price": "4.5"
-        },
-        {
-            "categoryId": 1,
-            "name": "Soup",
-            "image": "https://dyj6gt4964deb.cloudfront.net/images/362243826136565.jpg",
-            "description": "Potatoes, carrots, onions, green onions",
-            "weight": "300 g",
-            "discount": "",
-            "price": "4.3"
-        },
-        {
-            "categoryId": 2,
-            "name": "Avocado salad with feta",
-            "image": "https://dyj6gt4964deb.cloudfront.net/images/1593325156801055.jpg",
-            "description": "Ripe avocado, feta cheese, olives and spinach salad",
-            "weight": "300 g",
-            "discount": "",
-            "price": "4.9"
-        },
-        {
-            "categoryId": 2,
-            "name": "Camembert salad",
-            "image": "https://dyj6gt4964deb.cloudfront.net/images/1593325156801055.jpg",
-            "description": "Baked Camembert cheese with fresh vegetables",
-            "weight": "300 g",
-            "discount": "5",
-            "price": "4.5"
-        },
-        {
-            "categoryId": 3,
-            "name": "Raspberry mousse",
-            "image": "https://dyj6gt4964deb.cloudfront.net/images/616985337965459.jpg",
-            "description": "Raspberry mousse with cream and raspberry syrup",
-            "weight": "150 g",
-            "discount": "",
-            "price": "3.25"
-        }
-    ]
-};
+// const model = {
+//     "categories": [
+//         {
+//             "id": 0,
+//             "name": "BREAKFASTS"
+//         },
+//         {
+//             "id": 1,
+//             "name": "HOT MEALS"
+//         },
+//         {
+//             "id": 2,
+//             "name": "SALADS"
+//         },
+//         {
+//             "id": 3,
+//             "name": "DESERTS"
+//         }
+//     ],
+//     "items": [
+//         {
+//             "categoryId": 0,
+//             "name": "Full English breakfast",
+//             "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
+//             "description": "Fried eggs, bacon, toast, cherry tomatoes",
+//             "weight": "400 g",
+//             "discount": "8.19",
+//             "price": "6.99"
+//         },
+//         {
+//             "categoryId": 0,
+//             "name": "Oatmeal",
+//             "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
+//             "description": "Oatmeal with seasonal berries and berry syrup",
+//             "weight": "150 g",
+//             "discount": "4",
+//             "price": "3.25"
+//         },
+//         {
+//             "categoryId": 0,
+//             "name": "Cheese pancakes with jam",
+//             "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
+//             "description": "Fresh cottage cheese pancakes with strawberry jam and sour cream",
+//             "weight": "150 g",
+//             "discount": "",
+//             "price": "4.6"
+//         },
+//         {
+//             "categoryId": 0,
+//             "name": "Avocado toast",
+//             "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
+//             "description": "Rye toast with avocado and boiled egg",
+//             "weight": "70 g",
+//             "discount": "3",
+//             "price": "2.15"
+//         },
+//         {
+//             "categoryId": 0,
+//             "name": "Catfish on pumpkin puree",
+//             "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
+//             "description": "Catfish fillet baked with young potatoes. Served with salad and pumpkin puree",
+//             "weight": "380 g",
+//             "discount": "",
+//             "price": "6.5"
+//         },
+//         {
+//             "categoryId": 1,
+//             "name": "\"Homemade\" dumplings",
+//             "image": "https://dyj6gt4964deb.cloudfront.net/images/362243826136565.jpg",
+//             "description": "Vareniki with mashed potatoes and fried chanterelles",
+//             "weight": "250 g",
+//             "discount": "5.7",
+//             "price": "4.5"
+//         },
+//         {
+//             "categoryId": 1,
+//             "name": "Soup",
+//             "image": "https://dyj6gt4964deb.cloudfront.net/images/362243826136565.jpg",
+//             "description": "Potatoes, carrots, onions, green onions",
+//             "weight": "300 g",
+//             "discount": "",
+//             "price": "4.3"
+//         },
+//         {
+//             "categoryId": 2,
+//             "name": "Avocado salad with feta",
+//             "image": "https://dyj6gt4964deb.cloudfront.net/images/1593325156801055.jpg",
+//             "description": "Ripe avocado, feta cheese, olives and spinach salad",
+//             "weight": "300 g",
+//             "discount": "",
+//             "price": "4.9"
+//         },
+//         {
+//             "categoryId": 2,
+//             "name": "Camembert salad",
+//             "image": "https://dyj6gt4964deb.cloudfront.net/images/1593325156801055.jpg",
+//             "description": "Baked Camembert cheese with fresh vegetables",
+//             "weight": "300 g",
+//             "discount": "5",
+//             "price": "4.5"
+//         },
+//         {
+//             "categoryId": 3,
+//             "name": "Raspberry mousse",
+//             "image": "https://dyj6gt4964deb.cloudfront.net/images/616985337965459.jpg",
+//             "description": "Raspberry mousse with cream and raspberry syrup",
+//             "weight": "150 g",
+//             "discount": "",
+//             "price": "3.25"
+//         }
+//     ]
+// };
 
 const coffeeSizeData = [
     {
@@ -134,12 +134,370 @@ const coffeeSizeData = [
     }
 ]
 
-const slider = document.querySelector('.slider')
-const menuCards = document.querySelector('.menu-cards')
-const { categories, items } = model
+const applyFilter = document.querySelector('.apply-filter')
+const coffeeData = JSON.parse("{\"categories\":[{\"id\":0,\"name\":\"BREAKFASTS\"}],\"items\":[{\"categoryId\":0,\"name\":\"Catfish on pumpkin puree\",\"image\":\"https://eu2.contabostorage.com/3f9b49d682d34ec79a0010ab121089ca:common-menu/1083/items/1cee8973-83d2-4a4d-9199-635fe6bfae97.png\",\"description\":\"Catfish fillet baked with young potatoes. Served with salad and pumpkin puree\",\"weight\":\"150\",\"discount\":\"3\",\"price\":\"12\",\"specials\":[{\"halal\":true},{\"kosher\":false},{\"vegetarian\":false},{\"vegan\":false},{\"hot\":false},{\"gluten\":false}]}]}")
+
+const newItem = {
+    categoryId: 0,
+    "name": "Hot and gluten free meal",
+    "image": "https://eu2.contabostorage.com/3f9b49d682d34ec79a0010ab121089ca:common-menu/1083/items/1510d368-b3fb-4c21-a64a-4f3519a5f4be.png",
+    "description": "Catfish fillet baked with young potatoes, milk. Served with salad and pumpkin puree",
+    "weight": "250",
+    "price": {
+        "price": 0,
+        "priced": 0,
+        "xs": "10",
+        "xsd": "17",
+        "s": "11",
+        "sd": "16",
+        "m": "12",
+        "md": "15",
+        "l": "13",
+        "ld": "14"
+    },
+    "addons": [
+        {
+            "name": "Add-on 1",
+            "price": "10"
+        },
+        {
+            "name": "Add-on 2",
+            "price": "20"
+        }
+    ],
+    "specials": {
+        "halal": false,
+        "kosher": false,
+        "vegetarian": false,
+        "vegan": false,
+        "hot": true,
+        "gluten": true
+    }
+}
+
+const newItem1 = {
+    categoryId: 2,
+    "name": "vegan et",
+    "image": "https://eu2.contabostorage.com/3f9b49d682d34ec79a0010ab121089ca:common-menu/1083/items/1510d368-b3fb-4c21-a64a-4f3519a5f4be.png",
+    "description": "Catfish fillet baked with young potatoes. Served with salad and pumpkin puree",
+    "weight": "150",
+    "price": {
+        "price": 0,
+        "priced": 0,
+        "xs": "10",
+        "xsd": "17",
+        "s": "11",
+        "sd": "16",
+        "m": "12",
+        "md": "15",
+        "l": "13",
+        "ld": "14",
+        "xl": "14",
+        "xld": "16"
+    },
+    "addons": [
+        {
+            "name": "Add-on 1",
+            "price": "10"
+        },
+        {
+            "name": "Add-on 2",
+            "price": "20"
+        },
+        {
+            "name": "Add-on 3",
+            "price": "25"
+        },
+        {
+            "name": "Add-on 4",
+            "price": "30"
+        }
+    ],
+    "specials": {
+        "halal": false,
+        "kosher": false,
+        "vegetarian": false,
+        "vegan": true,
+        "hot": false,
+        "gluten": false
+    }
+}
+
+const newItem2 = {
+    categoryId: 1,
+    name: "Meal for Kosher",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWS4LDoirxqwSv52CMVXh34qtrtXVnb7duoQ&s",
+    description: "A delicious salad with peanut, pineapple, x, y, and coconut",
+    weight: "250",
+    "price": {
+        "price": 0,
+        "priced": 0,
+        "xs": "10",
+        "xsd": "17",
+        "s": "11",
+        "sd": "16",
+        "m": "12",
+        "md": "15",
+        "l": "13",
+        "ld": "14",
+        "xl": "14",
+        "xld": "16"
+    },
+    "addons": [
+        {
+            "name": "Add-on 1",
+            "price": "10"
+        },
+        {
+            "name": "Add-on 2",
+            "price": "20"
+        },
+        {
+            "name": "Add-on 3",
+            "price": "25"
+        },
+        {
+            "name": "Add-on 4",
+            "price": "30"
+        }
+    ],
+    "specials": {
+        "halal": false,
+        "kosher": true,
+        "vegetarian": false,
+        "vegan": false,
+        "hot": false,
+        "gluten": false
+    }
+};
+
+const newItem3 = {
+    categoryId: 3,
+    name: "vegetarian meal",
+    image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    description: "A tasty meal with sugar syrop, apple, banana, blabla",
+    weight: "200",
+    "price": {
+        "price": 0,
+        "priced": 0,
+        "xs": "10",
+        "xsd": "17",
+        "s": "11",
+        "sd": "16",
+        "m": "12",
+        "md": "15",
+        "l": "13",
+        "ld": "14",
+        "xl": "14",
+        "xld": "16"
+    },
+    "addons": [
+        {
+            "name": "Add-on 1",
+            "price": "10"
+        },
+        {
+            "name": "Add-on 2",
+            "price": "20"
+        },
+        {
+            "name": "Add-on 4",
+            "price": "30"
+        }
+    ],
+    "specials": {
+        "halal": false,
+        "kosher": false,
+        "vegetarian": true,
+        "vegan": false,
+        "hot": false,
+        "gluten": false
+    }
+};
+
+const newItem4 = {
+    categoryId: 2,
+    name: "cookies gluten free",
+    image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    description: "A tasty meal with sugar syrop, apple, banana, coconut oil",
+    weight: "200",
+    "price": {
+        "price": 0,
+        "priced": 0,
+        "xs": "10",
+        "xsd": "17",
+        "s": "11",
+        "sd": "16",
+        "m": "12",
+        "md": "15",
+        "l": "1",
+        "ld": "14",
+        "xl": "23",
+        "xld": "39"
+    },
+    "addons": [
+        {
+            "name": "Add-on 1",
+            "price": "10"
+        },
+        {
+            "name": "Add-on 2",
+            "price": "20"
+        },
+        {
+            "name": "Add-on 3",
+            "price": "25"
+        },
+        {
+            "name": "Add-on 4",
+            "price": "30"
+        },
+        {
+            "name": "Add-on 5",
+            "price": "35"
+        },
+        {
+            "name": "Add-on 6",
+            "price": "40"
+        }
+    ],
+    "specials": {
+        "halal": false,
+        "kosher": false,
+        "vegetarian": false,
+        "vegan": false,
+        "hot": false,
+        "gluten": true
+    }
+};
+
+const newItem5 = {
+    categoryId: 4,
+    name: " halal kolbasa",
+    image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    description: "A tasty meal with sugar syrop, apple, banana, blabla",
+    weight: "200",
+    "price": {
+        "price": 0,
+        "priced": 0,
+        "xs": "10",
+        "xsd": "17",
+        "s": "11",
+        "sd": "16",
+        "m": "12",
+        "md": "15",
+        "l": "1",
+        "ld": "14",
+        "xl": "23",
+        "xld": "39"
+    },
+    "addons": [
+        {
+            "name": "Add-on 1",
+            "price": "10"
+        },
+        {
+            "name": "Add-on 2",
+            "price": "20"
+        },
+        {
+            "name": "Add-on 3",
+            "price": "25"
+        },
+        {
+            "name": "Add-on 4",
+            "price": "30"
+        }
+    ],
+    "specials": {
+        "halal": true,
+        "kosher": false,
+        "vegetarian": false,
+        "vegan": false,
+        "hot": false,
+        "gluten": false
+    }
+};
+
+const newItem6 = {
+    categoryId: 3,
+    name: "hot new item",
+    image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    description: "A tasty with egg, sugar, blabla",
+    weight: "200",
+    "price": {
+        "price": 0,
+        "priced": 0,
+        "xs": "10",
+        "xsd": "17",
+        "s": "11",
+        "sd": "16",
+        "m": "12",
+        "md": "15",
+        "l": "1",
+        "ld": "14",
+        "xl": "23",
+        "xld": "39"
+    },
+    "addons": [
+        {
+            "name": "Add-on 1",
+            "price": "10"
+        },
+        {
+            "name": "Add-on 2",
+            "price": "20"
+        },
+        {
+            "name": "Add-on 3",
+            "price": "25"
+        },
+        {
+            "name": "Add-on 4",
+            "price": "30"
+        }
+    ],
+    "specials": {
+        "halal": true,
+        "kosher": false,
+        "vegetarian": false,
+        "vegan": false,
+        "hot": true,
+        "gluten": false
+    }
+};
+
+const newcategory = {
+    id: 1,
+    name: "Salads"
+}
+
+const newcategory1 = {
+    id: 2,
+    name: "Deserts"
+}
+
+const newcategory2 = {
+    id: 3,
+    name: "Drinks"
+}
+
+const newcategory3 = {
+    id: 4,
+    name: "Snacks"
+}
+
+coffeeData.items.unshift(newItem, newItem1, newItem2, newItem3, newItem4, newItem5);
+coffeeData.items.pop()
+coffeeData.categories.push(newcategory, newcategory1, newcategory2, newcategory3)
+console.log(coffeeData);
 
 /* ------------------------------------------------------------------ */
 /*                      Fetching category data                        */
+
+const slider = document.querySelector('.slider')
+const menuCards = document.querySelector('.menu-cards')
+const { categories, items } = coffeeData
 const categoryData = categories.map(cat => {
     return `<a id="slider-${cat.id}" class="slider-item" href="#${cat.id}">${cat.name}</a>`;
 }).join('');
@@ -221,30 +579,40 @@ window.addEventListener('scroll', function() {
 // ------------------------------------------------------------------
 /*                        Fetching menu data                       */
 
-const menuData = categories.map(category => `
-    <section id=${category.id} class="">
-      <h4 class="mb-4 py-2">${category.name}</h4>
-      <div class="row">
-        ${items.map(product => category.id == product.categoryId ? `
-        <div id="${product.categoryId}" class="card-item col-md-6 mb-4">
-            <div class="card-content d-flex align-items-center">
-                <div class="entire-card"></div>
-                <div class="ms-3">
-                    <h5 class="product-name mb-0">${product.name}</h5>
-                    <div class="product-price d-flex">
-                        <p class="mb-0 text-muted">${product.price} ₼</p>
-                        ${product.discount ? `<p class="mb-0 text-muted"><del>${product.discount} ₼</del></p>` : ""}
+function fetchingMenuData() {
+    const slider = document.querySelector('.slider')
+    const categoryData = categories.map(cat => {
+        return `<a id="slider-${cat.id}" class="slider-item" href="#${cat.id}">${cat.name}</a>`;
+    }).join('');
+    
+    slider.innerHTML = categoryData
+
+    const menuData = categories.map(category => `
+        <section id=${category.id} class="">
+          <h4 class="mb-4 py-2">${category.name}</h4>
+          <div class="row">
+            ${items.map(product => category.id == product.categoryId ? `
+            <div id="${product.categoryId}" class="card-item col-md-6 mb-4">
+                <div class="card-content d-flex align-items-center">
+                    <div class="entire-card"></div>
+                    <div class="ms-3">
+                        <h5 class="product-name mb-0">${product.name}</h5>
+                        <div class="product-price d-flex">
+                            <p class="mb-0 text-muted">${product.price.xs} ₼</p>
+                            ${product.price.xsd ? `<p class="mb-0 text-muted"><del>${product.price.xsd} ₼</del></p>` : ""}
+                        </div>
                     </div>
+                    <img src="${product.image}" class="img img-fluid rounded" style="width: 100px; height: 80px;" alt="Espresso double">
                 </div>
-                <img src="${product.image}" class="img img-fluid rounded" style="width: 100px; height: 80px;" alt="Espresso double">
+            </div>` : "").join("")}
             </div>
-        </div>` : "").join("")}
-        </div>
-    </section>`
-
-).join("")
-
-menuCards.innerHTML = menuData
+        </section>`
+    
+    ).join("")
+    
+    menuCards.innerHTML = menuData
+}
+fetchingMenuData()
 
 // ------------------------------------------------------------------//
 //              to add active class with scrolling                   //
@@ -254,12 +622,11 @@ window.addEventListener('scroll', () => {
     const category = document.querySelectorAll('.slider-item');
     
     const options = {
-        threshold: 0.5
+        threshold: 0.9
     }
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            
             if (entry.isIntersecting) {
                 category.forEach(section => section.classList.remove('active'));
 
@@ -275,18 +642,22 @@ window.addEventListener('scroll', () => {
 // ------------------------------------------------------------------//
 //              adding Cup size data to seeMorePopup                 //
 
-const fetchingSizeData = coffeeSizeData.map(svg => {
-    return `
-    <div class="size-card d-flex justify-content-between align-items-center">
-        <div class="cup-description d-flex justify-content-start align-items-center">
-            <img src="./assets/images/${svg.name}.svg" width="30px" height="30px" alt="">
-            <b>${svg.name.toLocaleUpperCase()}</b>
-            <span>230ml</span>
-        </div>
-        <div class="price-of-cup d-flex justify-content-start align-items-center">
-            <span>3.99 ₼</span>
-        </div>
-    </div>`
+const fetchingSizeData = items.map(svg => {
+    const sizesArray = ['xs', 's', 'm', 'l', 'xl']
+    const sizes = sizesArray.map(size => {
+        // console.log(size);
+        console.log(svg.price[size + 'd']);
+        return `<div class="size-card d-flex justify-content-between align-items-center">
+            <div class="cup-description d-flex justify-content-start align-items-center">
+                <img src="./assets/images/${size}.svg" width="30px" height="30px" alt="">
+                <b>${size.toLocaleUpperCase()}</b>
+                <span>230ml</span>
+            </div>
+            <div class="price-of-cup d-flex justify-content-start align-items-center">
+                <span>${svg.price[size]} ₼</span>
+            </div>
+        </div>`
+    })
 })
 
 const sizePlace = document.querySelector('.size-place')
@@ -373,125 +744,39 @@ resetFilter.addEventListener('click', ()=>{
  * Apply filter
  */
 
-const applyFilter = document.querySelector('.apply-filter')
-const coffeeData = JSON.parse("{\"categories\":[{\"id\":0,\"name\":\"BREAKFASTS (8 AM - 10 AM)\"}],\"items\":[{\"categoryId\":0,\"name\":\"Catfish on pumpkin puree\",\"image\":\"https://eu2.contabostorage.com/3f9b49d682d34ec79a0010ab121089ca:common-menu/1083/items/1cee8973-83d2-4a4d-9199-635fe6bfae97.png\",\"description\":\"Catfish fillet baked with young potatoes. Served with salad and pumpkin puree\",\"weight\":\"150\",\"discount\":\"3\",\"price\":\"12\",\"specials\":[{\"halal\":true},{\"kosher\":false},{\"vegetarian\":false},{\"vegan\":false},{\"hot\":false},{\"gluten\":false}]}]}")
-
-const newItem1 = {
-    categoryId: 0,
-    name: "tasty meal",
-    image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    description: "A tasty meal with sugar syrop, apple, banana, blabla",
-    weight: "200",
-    discount: "5",
-    price: "15",
-    specials: {
-        halal: false,
-        kosher: false,
-        vegetarian: true,
-        vegan: true,
-        hot: false,
-        gluten: false
-    }
-};
-
-const newItem2 = {
-    categoryId: 1,
-    name: "Meal for Kosher",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWS4LDoirxqwSv52CMVXh34qtrtXVnb7duoQ&s",
-    description: "A delicious salad with peanut, pineapple, x, y, and coconut",
-    weight: "250",
-    discount: "7",
-    price: "9",
-    specials: {
-        halal: false,
-        kosher: true,
-        vegetarian: false,
-        vegan: false,
-        hot: false,
-        gluten: false
-    }
-};
-
-const newItem3 = {
-    categoryId: 0,
-    name: "Hot meal",
-    image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    description: "A tasty meal with sugar syrop, apple, banana, blabla",
-    weight: "200",
-    discount: "5",
-    price: "12",
-    specials: {
-        halal: false,
-        kosher: false,
-        vegetarian: false,
-        vegan: false,
-        hot: true,
-        gluten: false
-    }
-};
-
-const newItem4 = {
-    categoryId: 1,
-    name: "cookies gluten free",
-    image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    description: "A tasty meal with sugar syrop, apple, banana, blabla",
-    weight: "200",
-    discount: "5",
-    price: "15",
-    specials: {
-        halal: false,
-        kosher: false,
-        vegetarian: false,
-        vegan: false,
-        hot: false,
-        gluten: true
-    }
-};
-
-const newcategory = {
-    id: 1,
-    name: "Salads"
-}
-coffeeData.items.unshift(newItem1, newItem2, newItem3, newItem4);
-coffeeData.items.pop()
-coffeeData.categories.push(newcategory)
-console.log(coffeeData);
-
-// function applyFilterToMenuData(x) {
-//     const specials = coffeeData.items[0].specials.map(special => {
-//         return Object.keys(special).map(key => {
-//             return special[key] ? key : '';
-//         }).join('');
-//     }).join('');
-//     return specials
-// }
-// applyFilterToMenuData()
 
 applyFilter.addEventListener('click', ()=>{                                                                                                                                                        
-    const  { categories, items } = coffeeData
-
+    const  { categories, items } = coffeeData;
     const activeFilters = Array.from(document.querySelectorAll('.filter-btn.active')).map(button => button.dataset.filter);
-    console.log(activeFilters);
     
-    let newFiltered = [];
+    let newFilteredItem = [];
+    let newFilteredCategory = [];
 
-    coffeeData.items.filter(item => {
+    items.filter(item => {
         activeFilters.map(filter => {
             if (item.specials[filter.toLowerCase()] == true) {
-                if (!newFiltered.includes(item)) {
-                    newFiltered.push(item);
+                if (!newFilteredItem.includes(item)) {
+                    newFilteredItem.push(item);
+                    categories.map(category => {
+                        if (category.id == item.categoryId) {
+                            if (!newFilteredCategory.includes(category)) {
+                                newFilteredCategory.push(category);
+                            }
+                        }
+                    });
                 }
             }
         });        
     });
-    console.log(newFiltered);
-    
-    const appliedFilterData = categories.map(category => {
+    console.log(newFilteredItem);
+    console.log(newFilteredCategory);
+
+    const appliedFilterData = newFilteredCategory.map(category => {
         return`
         <section id=${category.id} class="">
           <h4 class="mb-4 py-2">${category.name}</h4>
           <div class="row">
-            ${newFiltered.map(product => {
+            ${newFilteredItem.map(product => {
                 return category.id == product.categoryId ? `
             <div id="${product.categoryId}" class="card-item col-md-6 mb-4">
                 <div class="card-content d-flex align-items-center">
@@ -499,8 +784,8 @@ applyFilter.addEventListener('click', ()=>{
                     <div class="ms-3">
                         <h5 class="product-name mb-0">${product.name}</h5>
                         <div class="product-price d-flex">
-                            <p class="mb-0 text-muted">${product.price} ₼</p>
-                            ${product.discount ? `<p class="mb-0 text-muted"><del>${product.discount} ₼</del></p>` : ""}
+                            <p class="mb-0 text-muted">${product.price.xs} ₼</p>
+                            ${product.price.xsd ? `<p class="mb-0 text-muted"><del>${product.price.xsd} ₼</del></p>` : ""}
                         </div>
                     </div>
                     <img src="${product.image}" class="img img-fluid rounded" style="width: 100px; height: 80px;" alt="">
@@ -509,15 +794,22 @@ applyFilter.addEventListener('click', ()=>{
             </div>
         </section>`
     }).join("")
-
-    // console.log(valuseOfInput);
     
     menuCards.innerHTML = appliedFilterData
+
+    const categoryData = newFilteredCategory.map(cat => {
+        return `<a id="slider-${cat.id}" class="slider-item" href="#${cat.id}">${cat.name}</a>`;
+    }).join('');
+    
+    document.querySelector('.slider').innerHTML = categoryData
+    if (activeFilters.length == 0) {
+        fetchingMenuData()
+    }
 })
 
-document.querySelectorAll('.filter-btn').forEach(button => {
-    button.classList.remove('active')
-})
+// document.querySelectorAll('.filter-btn').forEach(button => {
+//     button.classList.remove('active')
+// })
 
 // ----------------------------------------------------------------------
 
