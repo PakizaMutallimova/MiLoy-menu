@@ -467,7 +467,7 @@ console.log(coffeeData);
 // }
 // applyFilterToMenuData()
 
-applyFilter.addEventListener('click', ()=>{
+applyFilter.addEventListener('click', ()=>{                                                                                                                                                        
     const  { categories, items } = coffeeData
 
     const activeFilters = Array.from(document.querySelectorAll('.filter-btn.active')).map(button => button.dataset.filter);
