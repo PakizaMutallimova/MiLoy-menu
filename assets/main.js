@@ -139,8 +139,9 @@ const coffeeData = JSON.parse("{\"categories\":[{\"id\":0,\"name\":\"BREAKFASTS\
 
 const newItem = {
     categoryId: 0,
+    itemID: 40,
     "name": "Hot and gluten free meal",
-    "image": "https://eu2.contabostorage.com/3f9b49d682d34ec79a0010ab121089ca:common-menu/1083/items/1510d368-b3fb-4c21-a64a-4f3519a5f4be.png",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWS4LDoirxqwSv52CMVXh34qtrtXVnb7duoQ&s",
     "description": "Catfish fillet baked with young potatoes, milk. Served with salad and pumpkin puree",
     "weight": "250",
     "price": {
@@ -177,8 +178,9 @@ const newItem = {
 
 const newItem1 = {
     categoryId: 2,
+    itemID: 50,
     "name": "vegan et",
-    "image": "https://eu2.contabostorage.com/3f9b49d682d34ec79a0010ab121089ca:common-menu/1083/items/1510d368-b3fb-4c21-a64a-4f3519a5f4be.png",
+    "image": "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     "description": "Catfish fillet baked with young potatoes. Served with salad and pumpkin puree",
     "weight": "150",
     "price": {
@@ -225,6 +227,7 @@ const newItem1 = {
 
 const newItem2 = {
     categoryId: 1,
+    itemID: 60,
     name: "Meal for Kosher",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWS4LDoirxqwSv52CMVXh34qtrtXVnb7duoQ&s",
     description: "A delicious salad with peanut, pineapple, x, y, and coconut",
@@ -273,6 +276,7 @@ const newItem2 = {
 
 const newItem3 = {
     categoryId: 3,
+    itemID: 70,
     name: "vegetarian meal",
     image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     description: "A tasty meal with sugar syrop, apple, banana, blabla",
@@ -301,7 +305,7 @@ const newItem3 = {
             "price": "20"
         },
         {
-            "name": "Add-on 4",
+            "name": "Add-on 3",
             "price": "30"
         }
     ],
@@ -317,6 +321,7 @@ const newItem3 = {
 
 const newItem4 = {
     categoryId: 2,
+    itemID: 80,
     name: "cookies gluten free",
     image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     description: "A tasty meal with sugar syrop, apple, banana, coconut oil",
@@ -373,6 +378,7 @@ const newItem4 = {
 
 const newItem5 = {
     categoryId: 4,
+    itemID: 90,
     name: " halal kolbasa",
     image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     description: "A tasty meal with sugar syrop, apple, banana, blabla",
@@ -421,6 +427,7 @@ const newItem5 = {
 
 const newItem6 = {
     categoryId: 3,
+    itemID: 100,
     name: "hot new item",
     image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     description: "A tasty with egg, sugar, blabla",
@@ -532,7 +539,7 @@ document.addEventListener('click', (e) => {
     const target = e.target
     if (target.classList.contains('product-image') || target.classList.contains('image-zoom')) {
         popup.style.display = 'block';
-        popupImage.src = target.src
+        popupImage.src = document.querySelector('.see-more-image').style.backgroundImage.slice(5, -2)
         popupImage.src = target.style.backgroundImage.slice(5, -2)
     }
 })
@@ -592,9 +599,9 @@ function fetchingMenuData() {
           <h4 class="mb-4 py-2">${category.name}</h4>
           <div class="row">
             ${items.map(product => category.id == product.categoryId ? `
-            <div id="${product.categoryId}" class="card-item col-md-6 mb-4">
+            <div class="card-item col-md-6 mb-4">
                 <div class="card-content d-flex align-items-center">
-                    <div class="entire-card"></div>
+                    <div id="${product.itemID}" class="entire-card"></div>
                     <div class="ms-3">
                         <h5 class="product-name mb-0">${product.name}</h5>
                         <div class="product-price d-flex">
@@ -643,21 +650,21 @@ window.addEventListener('scroll', () => {
 //              adding Cup size data to seeMorePopup                 //
 
 const fetchingSizeData = items.map(svg => {
-    const sizesArray = ['xs', 's', 'm', 'l', 'xl']
-    const sizes = sizesArray.map(size => {
-        // console.log(size);
-        console.log(svg.price[size + 'd']);
-        return `<div class="size-card d-flex justify-content-between align-items-center">
-            <div class="cup-description d-flex justify-content-start align-items-center">
-                <img src="./assets/images/${size}.svg" width="30px" height="30px" alt="">
-                <b>${size.toLocaleUpperCase()}</b>
-                <span>230ml</span>
-            </div>
-            <div class="price-of-cup d-flex justify-content-start align-items-center">
-                <span>${svg.price[size]} ₼</span>
-            </div>
-        </div>`
-    })
+    // const sizesArray = ['xs', 's', 'm', 'l', 'xl']
+    // const sizes = sizesArray.map(size => {
+    //     // console.log(size);
+    //     // console.log(svg.price[size + 'd']);
+    //     return `<div class="size-card d-flex justify-content-between align-items-center">
+    //         <div class="cup-description d-flex justify-content-start align-items-center">
+    //             <img src="./assets/images/${size}.svg" width="30px" height="30px" alt="">
+    //             <b>${size.toLocaleUpperCase()}</b>
+    //             <span>230ml</span>
+    //         </div>
+    //         <div class="price-of-cup d-flex justify-content-start align-items-center">
+    //             <span>${svg.price[size]} ₼</span>
+    //         </div>
+    //     </div>`
+    // })
 })
 
 const sizePlace = document.querySelector('.size-place')
@@ -704,12 +711,44 @@ document.addEventListener('click', (e)=>{
         const imgElementSrc = cardContent.querySelector('img').src; 
         body.style.overflow = "hidden"
         seeMoreBack.style.display = "block"
-        seeMoreIMG.style.backgroundImage = `url("${imgElementSrc}")`;        
+        seeMoreIMG.style.backgroundImage = `url("${imgElementSrc}")`;
+        let selectedItem = items.filter(item => item.itemID == parseInt(eTar.id))[0]
+        const sizesArray = ['xs', 's', 'm', 'l', 'xl']
+        const allSizes = Object.keys(selectedItem.price).filter(key => sizesArray.includes(key))
+
+        const sizeItem = allSizes.map(size => {
+            return `<div class="size-card d-flex justify-content-between align-items-center">
+                <div class="cup-description d-flex justify-content-start align-items-center">
+                    <img src="./assets/images/${size.toLocaleUpperCase()}.svg" width="30px" height="30px" alt="">
+                    <b>${size.toLocaleUpperCase()}</b>
+                    <span>230ml</span>
+                </div>
+                <div class="price-of-cup d-flex justify-content-start align-items-center">
+                    <span>${selectedItem.price[size]} ₼</span>
+                </div>
+            </div>`
+        }).join('')
+        document.querySelector('.size-place').innerHTML += sizeItem
+        let addons = selectedItem.addons.map(addon => {
+            return `
+            <div class="addons type-card d-flex justify-content-between align-items-center">
+                <div class="cup-description d-flex justify-content-start align-items-center">
+                    <img src="./assets/images/done.svg" width="30px" height="30px" alt="">
+                    <span>${addon.name}</span>
+                </div>
+                <div class="price-of-cup d-flex justify-content-start align-items-center">
+                    <span>${addon.price} ₼</span>
+                </div>
+            </div>`
+         }).join('')
+        document.querySelector('.type-place').innerHTML += addons
     }
     else if (eTar.classList.contains("see-more-back")) {
         body.style.overflow = "auto"
         seeMoreBack.style.display = "none"
-    }
+        document.querySelector('.type-place').innerHTML = '<h5 class="fw-bold">Coffee type</h5>'
+        document.querySelector('.size-place').innerHTML = '<h5 class="fw-bold">Size</h5>'
+    } 
 })
 
 // ----------------------------------------------------------------------
@@ -778,9 +817,9 @@ applyFilter.addEventListener('click', ()=>{
           <div class="row">
             ${newFilteredItem.map(product => {
                 return category.id == product.categoryId ? `
-            <div id="${product.categoryId}" class="card-item col-md-6 mb-4">
+            <div class="card-item col-md-6 mb-4">
                 <div class="card-content d-flex align-items-center">
-                    <div class="entire-card"></div>
+                    <div id="${product.itemID}" class="entire-card"></div>
                     <div class="ms-3">
                         <h5 class="product-name mb-0">${product.name}</h5>
                         <div class="product-price d-flex">
