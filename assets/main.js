@@ -140,7 +140,7 @@ const coffeeData = JSON.parse("{\"categories\":[{\"id\":0,\"name\":\"BREAKFASTS\
 const newItem = {
     categoryId: 0,
     itemID: 40,
-    "name": "Hot and gluten free meal",
+    "name": "Hot and gluten free meal with milk",
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWS4LDoirxqwSv52CMVXh34qtrtXVnb7duoQ&s",
     "description": "Catfish fillet baked with young potatoes, milk. Served with salad and pumpkin puree",
     "weight": "250",
@@ -179,9 +179,9 @@ const newItem = {
 const newItem1 = {
     categoryId: 2,
     itemID: 50,
-    "name": "vegan et",
+    "name": "vegan et, coconut oil",
     "image": "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    "description": "Catfish fillet baked with young potatoes. Served with salad and pumpkin puree",
+    "description": "Catfish fillet baked with young potatoes, coconut. Served with salad and pumpkin puree",
     "weight": "150",
     "price": {
         "price": 0,
@@ -228,7 +228,7 @@ const newItem1 = {
 const newItem2 = {
     categoryId: 1,
     itemID: 60,
-    name: "Meal for Kosher",
+    name: "Meal for Kosher, peanut",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWS4LDoirxqwSv52CMVXh34qtrtXVnb7duoQ&s",
     description: "A delicious salad with peanut, pineapple, x, y, and coconut",
     weight: "250",
@@ -277,7 +277,7 @@ const newItem2 = {
 const newItem3 = {
     categoryId: 3,
     itemID: 70,
-    name: "vegetarian meal",
+    name: "vegetarian meal, sugar syrop",
     image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     description: "A tasty meal with sugar syrop, apple, banana, blabla",
     weight: "200",
@@ -322,7 +322,7 @@ const newItem3 = {
 const newItem4 = {
     categoryId: 2,
     itemID: 80,
-    name: "cookies gluten free",
+    name: "cookies gluten free, sugar",
     image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     description: "A tasty meal with sugar syrop, apple, banana, coconut oil",
     weight: "200",
@@ -379,9 +379,9 @@ const newItem4 = {
 const newItem5 = {
     categoryId: 4,
     itemID: 90,
-    name: " halal kolbasa",
+    name: " halal kolbasa, egg",
     image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-    description: "A tasty meal with sugar syrop, apple, banana, blabla",
+    description: "A tasty meal with egg, apple, banana, blabla",
     weight: "200",
     "price": {
         "price": 0,
@@ -428,7 +428,7 @@ const newItem5 = {
 const newItem6 = {
     categoryId: 3,
     itemID: 100,
-    name: "hot new item",
+    name: "hot new item with milk, egg",
     image: "https://images.unsplash.com/photo-1596189181426-7f63a1737f0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     description: "A tasty with egg, sugar, blabla",
     weight: "200",
@@ -510,7 +510,6 @@ const categoryData = categories.map(cat => {
 }).join('');
 
 slider.innerHTML = categoryData
-
 const sliderItems = document.querySelectorAll('.slider-item')
 
 // ------------------------------------------------------------------- //
@@ -539,9 +538,9 @@ document.addEventListener('click', (e) => {
     const target = e.target
     if (target.classList.contains('product-image') || target.classList.contains('image-zoom')) {
         popup.style.display = 'block';
-        popupImage.src = document.querySelector('.see-more-image').style.backgroundImage.slice(5, -2)
         popupImage.src = target.style.backgroundImage.slice(5, -2)
-    }
+        popupImage.src = document.querySelector('.see-more-image').style.backgroundImage.slice(5, -2);
+    }    
 })
 
 // -----------------------------------------------------------------
@@ -646,57 +645,9 @@ window.addEventListener('scroll', () => {
     sectionHeadings.forEach(heading => observer.observe(heading));
 });
 
-// ------------------------------------------------------------------//
-//              adding Cup size data to seeMorePopup                 //
 
-const fetchingSizeData = items.map(svg => {
-    // const sizesArray = ['xs', 's', 'm', 'l', 'xl']
-    // const sizes = sizesArray.map(size => {
-    //     // console.log(size);
-    //     // console.log(svg.price[size + 'd']);
-    //     return `<div class="size-card d-flex justify-content-between align-items-center">
-    //         <div class="cup-description d-flex justify-content-start align-items-center">
-    //             <img src="./assets/images/${size}.svg" width="30px" height="30px" alt="">
-    //             <b>${size.toLocaleUpperCase()}</b>
-    //             <span>230ml</span>
-    //         </div>
-    //         <div class="price-of-cup d-flex justify-content-start align-items-center">
-    //             <span>${svg.price[size]} ₼</span>
-    //         </div>
-    //     </div>`
-    // })
-})
-
-const sizePlace = document.querySelector('.size-place')
-sizePlace.innerHTML += fetchingSizeData.join('')
-
-
-// ------------------------------------------------------------------
-
-const languageItem = document.querySelector('.language-item')
-const languageOptions = document.querySelector('.language-options')
-var clicked = true
-
-languageItem.addEventListener('click', ()=> {
-    if (clicked == true) {
-        languageOptions.style.display = 'block'
-        clicked = !clicked
-    }
-    else{
-        languageOptions.style.display = 'none'
-        clicked = !clicked
-    }
-})
-
-const languageOptionItem = languageOptions.querySelectorAll('.language-item')
-languageOptionItem[0].addEventListener('click', ()=>{
-    // languageItem.innerHTML = 'EN'
-    // languageOptions.style.display = 'none'
-})
-
-
-// ----------------------------------------------------------------------
-//                 to open seeMorePopup when click on card               //
+// -------------------------------------------------------------------- //
+//                 to open seeMorePopup when click on card              //
 
 const body = document.querySelector('body')
 const seeMoreImage = document.querySelector('.see-more-image')
@@ -715,20 +666,6 @@ document.addEventListener('click', (e)=>{
         let selectedItem = items.filter(item => item.itemID == parseInt(eTar.id))[0]
         const sizesArray = ['xs', 's', 'm', 'l', 'xl']
         const allSizes = Object.keys(selectedItem.price).filter(key => sizesArray.includes(key))
-
-        const sizeItem = allSizes.map(size => {
-            return `<div class="size-card d-flex justify-content-between align-items-center">
-                <div class="cup-description d-flex justify-content-start align-items-center">
-                    <img src="./assets/images/${size.toLocaleUpperCase()}.svg" width="30px" height="30px" alt="">
-                    <b>${size.toLocaleUpperCase()}</b>
-                    <span>230ml</span>
-                </div>
-                <div class="price-of-cup d-flex justify-content-start align-items-center">
-                    <span>${selectedItem.price[size]} ₼</span>
-                </div>
-            </div>`
-        }).join('')
-        document.querySelector('.size-place').innerHTML += sizeItem
         let addons = selectedItem.addons.map(addon => {
             return `
             <div class="addons type-card d-flex justify-content-between align-items-center">
@@ -742,6 +679,20 @@ document.addEventListener('click', (e)=>{
             </div>`
          }).join('')
         document.querySelector('.type-place').innerHTML += addons
+    // ------------------------------------------------------------------
+        const sizeItem = allSizes.map(size => {
+            return `<div class="size-card d-flex justify-content-between align-items-center">
+                <div class="cup-description d-flex justify-content-start align-items-center">
+                    <img src="./assets/images/${size.toLocaleUpperCase()}.svg" width="30px" height="30px" alt="">
+                    <b>${size.toLocaleUpperCase()}</b>
+                    <span>230ml</span>
+                </div>
+                <div class="price-of-cup d-flex justify-content-start align-items-center">
+                    <span>${selectedItem.price[size]} ₼</span>
+                </div>
+            </div>`
+        }).join('')
+        document.querySelector('.size-place').innerHTML += sizeItem
     }
     else if (eTar.classList.contains("see-more-back")) {
         body.style.overflow = "auto"
@@ -782,7 +733,20 @@ resetFilter.addEventListener('click', ()=>{
 /**
  * Apply filter
  */
-
+let selectedItems = [];
+checkedİnputs.forEach(checkbox => {
+    checkbox.addEventListener('click', function(event) {
+        event.stopPropagation();
+        selectedItems = [];
+        document.querySelectorAll('.dropdown-item input[type="checkbox"]:checked').forEach(checkedItem => {
+            selectedItems.push(checkedItem.value);
+        });
+        allergyDropdown.innerText = selectedItems.join(', ');
+        if (selectedItems.length === 0) {
+            allergyDropdown.innerText = 'Seçin';
+        }
+    });
+});
 
 applyFilter.addEventListener('click', ()=>{                                                                                                                                                        
     const  { categories, items } = coffeeData;
@@ -795,20 +759,23 @@ applyFilter.addEventListener('click', ()=>{
         activeFilters.map(filter => {
             if (item.specials[filter.toLowerCase()] == true) {
                 if (!newFilteredItem.includes(item)) {
-                    newFilteredItem.push(item);
-                    categories.map(category => {
-                        if (category.id == item.categoryId) {
-                            if (!newFilteredCategory.includes(category)) {
-                                newFilteredCategory.push(category);
-                            }
-                        }
+                    let matchesAllergy = selectedItems.some(allergy => {
+                        return item.description.toLowerCase().includes(allergy.toLowerCase());
                     });
+                    if (!matchesAllergy) {
+                        newFilteredItem.push(item);
+                        categories.map(category => {
+                            if (category.id == item.categoryId) {
+                                if (!newFilteredCategory.includes(category)) {
+                                    newFilteredCategory.push(category);
+                                }
+                            }
+                        });
+                    }
                 }
             }
         });        
     });
-    console.log(newFilteredItem);
-    console.log(newFilteredCategory);
 
     const appliedFilterData = newFilteredCategory.map(category => {
         return`
@@ -845,105 +812,7 @@ applyFilter.addEventListener('click', ()=>{
         fetchingMenuData()
     }
 })
-
-// document.querySelectorAll('.filter-btn').forEach(button => {
-//     button.classList.remove('active')
-// })
-
 // ----------------------------------------------------------------------
-
-
-
-
-
-// ----------------------------------------------------------------------
-/**
-    * Dropdown with checkboxes
- */
-
-// function checked(addCheckedInput) {
-//     checkedİnputs.forEach(checkbox => {
-//         addCheckedInput = function() {
-//             if (checkbox.checked) {
-//                 // console.log(checkbox.value);
-//                 return checkbox.value
-//             }
-//         }        
-        
-//         checkbox.addEventListener('change', function() {
-//             let selectedItems = [];
-//             document.querySelectorAll('.dropdown-item input[type="checkbox"]:checked').forEach(checkedItem => {
-//                 selectedItems.push(checkedItem.value);
-//             });
-//             allergyDropdown.innerText = selectedItems.join(', ');
-//             if (selectedItems.length === 0) {
-//                 allergyDropdown.innerText = 'Seçin';
-//             }
-//         });
-//     });
-// }
-
-// console.log(checked(addCheckedInput));
-
-
-
-// checkedİnputs.forEach(checkbox => {
-//     checkbox.addEventListener('click', function(event) {
-//         event.stopPropagation();
-//         let selectedItems = [];
-//         document.querySelectorAll('.dropdown-item input[type="checkbox"]:checked').forEach(checkedItem => {
-//             selectedItems.push(checkedItem.value);
-//         });
-//         allergyDropdown.innerText = selectedItems.join(', ');
-//         if (selectedItems.length === 0) {
-//             allergyDropdown.innerText = 'Seçin';
-//         }
-//     });
-// });
-
-// ----------------------------------------------------------------------
-
-
-class CheckboxManager {
-    constructor(checkedInputs, dropdown) {
-        this.checkedInputs = checkedInputs;
-        this.dropdown = dropdown;
-    }
-
-    initialize() {
-        this.checkedInputs.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                this.updateDropdown();
-            });
-        });
-    }
-
-    updateDropdown() {
-        let selectedItems = this.getCheckedValues();
-        this.dropdown.innerText = selectedItems.join(', ');
-        if (selectedItems.length === 0) {
-            this.dropdown.innerText = 'Seçin';
-        }
-    }
-
-    getCheckedValues() {
-        let selectedItems = [];
-        document.querySelectorAll('.dropdown-item input[type="checkbox"]:checked').forEach(checkedItem => {
-            selectedItems.push(checkedItem.value);
-        });
-        return selectedItems;
-    }
-}
-
-const checkedInputs = document.querySelectorAll('.dropdown-item input[type="checkbox"]');
-const checkboxManager = new CheckboxManager(checkedInputs, allergyDropdown);
-checkboxManager.initialize();
-
-const valuseOfInput = checkboxManager.getCheckedValues()
-
-// console.log(valuseOfInput);
-
-
 
 /**
  * Search input click
@@ -1020,8 +889,13 @@ window.addEventListener('click', (e) => {
  * Filter modal
  */
 
-var filterModal = new bootstrap.Modal(document.getElementById('filterModal'), {
-    keyboard: false
-})
-filterModal.show();
-// ----------------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', (event) => {
+    var filterModal = new bootstrap.Modal(document.getElementById('filterModal'), {
+        keyboard: false
+    });
+    filterModal.hide();
+
+    document.querySelector('.filter').addEventListener('click', () => {
+        filterModal.show();
+    });
+});
