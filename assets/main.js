@@ -1,139 +1,3 @@
-// const model = {
-//     "categories": [
-//         {
-//             "id": 0,
-//             "name": "BREAKFASTS"
-//         },
-//         {
-//             "id": 1,
-//             "name": "HOT MEALS"
-//         },
-//         {
-//             "id": 2,
-//             "name": "SALADS"
-//         },
-//         {
-//             "id": 3,
-//             "name": "DESERTS"
-//         }
-//     ],
-//     "items": [
-//         {
-//             "categoryId": 0,
-//             "name": "Full English breakfast",
-//             "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
-//             "description": "Fried eggs, bacon, toast, cherry tomatoes",
-//             "weight": "400 g",
-//             "discount": "8.19",
-//             "price": "6.99"
-//         },
-//         {
-//             "categoryId": 0,
-//             "name": "Oatmeal",
-//             "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
-//             "description": "Oatmeal with seasonal berries and berry syrup",
-//             "weight": "150 g",
-//             "discount": "4",
-//             "price": "3.25"
-//         },
-//         {
-//             "categoryId": 0,
-//             "name": "Cheese pancakes with jam",
-//             "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
-//             "description": "Fresh cottage cheese pancakes with strawberry jam and sour cream",
-//             "weight": "150 g",
-//             "discount": "",
-//             "price": "4.6"
-//         },
-//         {
-//             "categoryId": 0,
-//             "name": "Avocado toast",
-//             "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
-//             "description": "Rye toast with avocado and boiled egg",
-//             "weight": "70 g",
-//             "discount": "3",
-//             "price": "2.15"
-//         },
-//         {
-//             "categoryId": 0,
-//             "name": "Catfish on pumpkin puree",
-//             "image": "https://dyj6gt4964deb.cloudfront.net/images/659733877193862.jpg",
-//             "description": "Catfish fillet baked with young potatoes. Served with salad and pumpkin puree",
-//             "weight": "380 g",
-//             "discount": "",
-//             "price": "6.5"
-//         },
-//         {
-//             "categoryId": 1,
-//             "name": "\"Homemade\" dumplings",
-//             "image": "https://dyj6gt4964deb.cloudfront.net/images/362243826136565.jpg",
-//             "description": "Vareniki with mashed potatoes and fried chanterelles",
-//             "weight": "250 g",
-//             "discount": "5.7",
-//             "price": "4.5"
-//         },
-//         {
-//             "categoryId": 1,
-//             "name": "Soup",
-//             "image": "https://dyj6gt4964deb.cloudfront.net/images/362243826136565.jpg",
-//             "description": "Potatoes, carrots, onions, green onions",
-//             "weight": "300 g",
-//             "discount": "",
-//             "price": "4.3"
-//         },
-//         {
-//             "categoryId": 2,
-//             "name": "Avocado salad with feta",
-//             "image": "https://dyj6gt4964deb.cloudfront.net/images/1593325156801055.jpg",
-//             "description": "Ripe avocado, feta cheese, olives and spinach salad",
-//             "weight": "300 g",
-//             "discount": "",
-//             "price": "4.9"
-//         },
-//         {
-//             "categoryId": 2,
-//             "name": "Camembert salad",
-//             "image": "https://dyj6gt4964deb.cloudfront.net/images/1593325156801055.jpg",
-//             "description": "Baked Camembert cheese with fresh vegetables",
-//             "weight": "300 g",
-//             "discount": "5",
-//             "price": "4.5"
-//         },
-//         {
-//             "categoryId": 3,
-//             "name": "Raspberry mousse",
-//             "image": "https://dyj6gt4964deb.cloudfront.net/images/616985337965459.jpg",
-//             "description": "Raspberry mousse with cream and raspberry syrup",
-//             "weight": "150 g",
-//             "discount": "",
-//             "price": "3.25"
-//         }
-//     ]
-// };
-
-const coffeeSizeData = [
-    {
-    "name": "xs",
-    "value": "10"
-    },
-    {
-    "name": "s",
-    "value": "12"
-    },
-    {
-    "name": "m",
-    "value": "14"
-    },
-    {
-    "name": "l",
-    "value": "16"
-    },
-    {
-    "name": "xl",
-    "value": "18"
-    }
-]
-
 const applyFilter = document.querySelector('.apply-filter')
 const coffeeData = JSON.parse("{\"categories\":[{\"id\":0,\"name\":\"BREAKFASTS\"}],\"items\":[{\"categoryId\":0,\"name\":\"Catfish on pumpkin puree\",\"image\":\"https://eu2.contabostorage.com/3f9b49d682d34ec79a0010ab121089ca:common-menu/1083/items/1cee8973-83d2-4a4d-9199-635fe6bfae97.png\",\"description\":\"Catfish fillet baked with young potatoes. Served with salad and pumpkin puree\",\"weight\":\"150\",\"discount\":\"3\",\"price\":\"12\",\"specials\":[{\"halal\":true},{\"kosher\":false},{\"vegetarian\":false},{\"vegan\":false},{\"hot\":false},{\"gluten\":false}]}]}")
 
@@ -499,6 +363,10 @@ coffeeData.items.pop()
 coffeeData.categories.push(newcategory, newcategory1, newcategory2, newcategory3)
 console.log(coffeeData);
 
+const parsed = JSON.parse("{\"categories\":[{\"id\":0,\"name\":\"BREAKFASTS (8 AM - 10 AM)\"},{\"id\":1,\"name\":\"Banana\"}],\"items\":[{\"id\":0,\"categoryId\":0,\"name\":\"Tomato\",\"image\":\"https://eu2.contabostorage.com/3f9b49d682d34ec79a0010ab121089ca:common-menu/1083/items/3db5fe4d-307d-4370-9fed-084e95e990ce.png\",\"description\":\"1\",\"weight\":\"105\",\"price\":{\"price\":0,\"priced\":0,\"xs\":\"1\",\"s\":\"2\",\"m\":\"2\",\"l\":\"3\",\"xl\":\"4\"},\"addons\":[],\"specials\":{\"halal\":true,\"kosher\":false,\"vegetarian\":false,\"vegan\":false,\"hot\":true,\"gluten\":false}},{\"id\":1,\"categoryId\":1,\"name\":\"Catfish on pumpkin puree\",\"image\":\"https://eu2.contabostorage.com/3f9b49d682d34ec79a0010ab121089ca:common-menu/1083/items/e4702f14-91cf-4654-a022-3fc7b9b1885d.png\",\"description\":\"Catfish fillet baked with young potatoes. Served with salad and pumpkin puree\",\"weight\":\"4\",\"price\":{\"price\":\"10\",\"priced\":\"3\",\"xs\":0,\"xsd\":0,\"s\":0,\"sd\":0,\"m\":0,\"md\":0,\"l\":0,\"ld\":0,\"xl\":0,\"xld\":0},\"addons\":[],\"specials\":{\"halal\":false,\"kosher\":false,\"vegetarian\":true,\"vegan\":false,\"hot\":true,\"gluten\":false}}]}")
+console.log(parsed);
+
+const allergies = ['Peanut', 'Gluten', 'Milk', 'Soy', 'Egg', 'Fish', 'Coconut', 'Wheat', 'Sesame', 'Sugar', 'Mustard', 'Celery']
 /* ------------------------------------------------------------------ */
 /*                      Fetching category data                        */
 
@@ -525,7 +393,6 @@ slider.addEventListener('click', (e) => {
 const closeBtn = document.querySelector('.closebtn')
 const popup = document.querySelector('.popup-image')
 const popupImage = document.querySelector('.popup-image img')
-const imageZoom = document.querySelector('.image-zoom')
 
 function displayNone() {
     popup.style.display = 'none'
@@ -536,11 +403,10 @@ closeBtn.addEventListener('click', displayNone)
 
 document.addEventListener('click', (e) => {
     const target = e.target
-    if (target.classList.contains('product-image') || target.classList.contains('image-zoom')) {
+    if (target.classList.contains('product-image')) {
         popup.style.display = 'block';
         popupImage.src = target.style.backgroundImage.slice(5, -2)
-        popupImage.src = document.querySelector('.see-more-image').style.backgroundImage.slice(5, -2);
-    }    
+    }
 })
 
 // -----------------------------------------------------------------
@@ -549,10 +415,19 @@ const darkMode = document.querySelector('.dark')
 const lightMode = document.querySelector('.light')
 
 darkMode.addEventListener('click', () => {
-    document.body.classList.add('dark-mode')
-    darkMode.style.display = 'none'
-    lightMode.style.display = 'block'
+    let isDark = document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkModeChecker', isDark ? 'enabled' : 'disabled')
+    document.body.classList.contains('dark-mode') ? darkMode.style.display = 'none' : lightMode.style.display = 'block'
 })
+// document.addEventListener("DOMContentLoaded", ()=>{
+//     if (localStorage.getItem('darkModeChecker') === 'enabled') {
+//         console.log(localStorage.getItem('darkModeChecker'));
+        
+//         document.body.classList.add('dark-mode')
+//         darkMode.style.display = 'none'
+//         lightMode.style.display = 'block'
+//     }
+// })
 
 lightMode.addEventListener('click', () => {
     document.body.classList.remove('dark-mode')
@@ -585,19 +460,16 @@ window.addEventListener('scroll', function() {
 // ------------------------------------------------------------------
 /*                        Fetching menu data                       */
 
-function fetchingMenuData() {
-    const slider = document.querySelector('.slider')
-    const categoryData = categories.map(cat => {
+function fetchingMenuData(category, item) {
+    document.querySelector('.slider').innerHTML = category.map(cat => {
         return `<a id="slider-${cat.id}" class="slider-item" href="#${cat.id}">${cat.name}</a>`;
     }).join('');
-    
-    slider.innerHTML = categoryData
 
-    const menuData = categories.map(category => `
+    document.querySelector('.menu-cards').innerHTML = category.map(category => `
         <section id=${category.id} class="">
           <h4 class="mb-4 py-2">${category.name}</h4>
           <div class="row">
-            ${items.map(product => category.id == product.categoryId ? `
+            ${item.map(product => category.id == product.categoryId ? `
             <div class="card-item col-md-6 mb-4">
                 <div class="card-content d-flex align-items-center">
                     <div id="${product.itemID}" class="entire-card"></div>
@@ -615,10 +487,8 @@ function fetchingMenuData() {
         </section>`
     
     ).join("")
-    
-    menuCards.innerHTML = menuData
 }
-fetchingMenuData()
+fetchingMenuData(categories, items)
 
 // ------------------------------------------------------------------//
 //              to add active class with scrolling                   //
@@ -694,7 +564,7 @@ document.addEventListener('click', (e)=>{
         }).join('')
         document.querySelector('.size-place').innerHTML += sizeItem
     }
-    else if (eTar.classList.contains("see-more-back")) {
+    else if (eTar.classList.contains("see-more-back") || eTar.classList.contains("close-seeMore")) {
         body.style.overflow = "auto"
         seeMoreBack.style.display = "none"
         document.querySelector('.type-place').innerHTML = '<h5 class="fw-bold">Coffee type</h5>'
@@ -712,6 +582,13 @@ document.querySelectorAll('.filter-btn').forEach(button => {
         const isActive = this.classList.contains('active');
     });
 });
+
+allergies.forEach(allergy => {
+    let i = allergies.indexOf(allergy)
+    document.querySelector('.dropdown-menu').innerHTML += `
+    <li><label class="dropdown-item" for="${allergy.toLocaleLowerCase() + i}"><input type="checkbox" id="${allergy.toLocaleLowerCase() + i}" name="${allergy.toLocaleLowerCase() + i}" 
+        value="${allergy}">${allergy}</label></li>`
+})
 
 /**
  * Reset filter when click on reset button
@@ -776,40 +653,9 @@ applyFilter.addEventListener('click', ()=>{
             }
         });        
     });
-
-    const appliedFilterData = newFilteredCategory.map(category => {
-        return`
-        <section id=${category.id} class="">
-          <h4 class="mb-4 py-2">${category.name}</h4>
-          <div class="row">
-            ${newFilteredItem.map(product => {
-                return category.id == product.categoryId ? `
-            <div class="card-item col-md-6 mb-4">
-                <div class="card-content d-flex align-items-center">
-                    <div id="${product.itemID}" class="entire-card"></div>
-                    <div class="ms-3">
-                        <h5 class="product-name mb-0">${product.name}</h5>
-                        <div class="product-price d-flex">
-                            <p class="mb-0 text-muted">${product.price.xs} ₼</p>
-                            ${product.price.xsd ? `<p class="mb-0 text-muted"><del>${product.price.xsd} ₼</del></p>` : ""}
-                        </div>
-                    </div>
-                    <img src="${product.image}" class="img img-fluid rounded" style="width: 100px; height: 80px;" alt="">
-                </div>
-            </div>` : ""}).join("")}
-            </div>
-        </section>`
-    }).join("")
-    
-    menuCards.innerHTML = appliedFilterData
-
-    const categoryData = newFilteredCategory.map(cat => {
-        return `<a id="slider-${cat.id}" class="slider-item" href="#${cat.id}">${cat.name}</a>`;
-    }).join('');
-    
-    document.querySelector('.slider').innerHTML = categoryData
+    fetchingMenuData(newFilteredCategory, newFilteredItem)
     if (activeFilters.length == 0) {
-        fetchingMenuData()
+        fetchingMenuData(categories, items)
     }
 })
 // ----------------------------------------------------------------------
@@ -849,7 +695,7 @@ function debounce(func, delay) {
  * Search logic with debouncing
  */
 const searchInput = document.querySelector('.search-input input');
-
+let searchResultItems = [];
 function performSearch(event) {
     const searchTerm = event.toLowerCase();
     const searchResultsDiv = document.querySelector('.search-result');
@@ -859,14 +705,21 @@ function performSearch(event) {
         return;
     }
 
-    let searchResults = items.filter(item => item.name.toLowerCase().includes(searchTerm)).map(item => {
+    searchResultItems = items.filter(item => item.name.toLowerCase().includes(searchTerm));
+    console.log(searchResultItems);
+    
+    let searchResults = searchResultItems.map(item => {
+        console.log(item);
         return `
         <div class="search-result-item">
-            <div class="entire-card"></div>
+            <div class="entire-card" data-id="${item.itemID}"></div>
             <img src="${item.image}" alt="">
             <div class="search-result-item-info">
                 <h5 class="fw-bold">${item.name}</h5>
-                <p class="text-muted">${item.price} ₼</p>
+                <div class="d-flex align-items-center justify-content-end gap-2">
+                    <p >${item.price["xs"]} ₼</p>
+                    ${item.price.xsd ? `<p class="text-muted"><del>${item.price.xsd} ₼</del></p>` : ""}
+                </div>
             </div>
         </div>`;
     });
@@ -880,7 +733,45 @@ searchInput.addEventListener('input', debouncedSearch);
 window.addEventListener('click', (e) => {
     if (e.target.classList.contains('entire-card')) {
         body.style.overflow = "hidden"
-        seeMoreBack.style.display = "block"
+        seeMoreBack.style.display = "block"        
+
+        const selectedItemID = parseInt(e.target.getAttribute('data-id'))
+        const selectedItem = searchResultItems.find(item => item.itemID === selectedItemID)
+
+        if (!selectedItem) {
+            return;
+        }
+
+        const sizesArray = ['xs', 's', 'm', 'l', 'xl']
+        const allSizes = Object.keys(selectedItem.price).filter(key => sizesArray.includes(key))
+        let addons = selectedItem.addons.map(addon => {
+            return `
+            <div class="addons type-card d-flex justify-content-between align-items-center">
+                <div class="cup-description d-flex justify-content-start align-items-center">
+                    <img src="./assets/images/done.svg" width="30px" height="30px" alt="">
+                    <span>${addon.name}</span>
+                </div>
+                <div class="price-of-cup d-flex justify-content-start align-items-center">
+                    <span>${addon.price} ₼</span>
+                </div>
+            </div>`
+         }).join('')
+        document.querySelector('.type-place').innerHTML += addons
+    // ---------------------------------------------
+        const sizeItem = allSizes.map(size => {
+            return `<div class="size-card d-flex justify-content-between align-items-center">
+                <div class="cup-description d-flex justify-content-start align-items-center">
+                    <img src="./assets/images/${size.toLocaleUpperCase()}.svg" width="30px" height="30px" alt="">
+                    <b>${size.toLocaleUpperCase()}</b>
+                    <span>230ml</span>
+                </div>
+                <div class="price-of-cup d-flex justify-content-start align-items-center">
+                    <span>${selectedItem.price[size]} ₼</span>
+                </div>
+            </div>`
+        }).join('')
+        document.querySelector('.size-place').innerHTML += sizeItem
+    // --------------------------------------------
     }
 });
 
