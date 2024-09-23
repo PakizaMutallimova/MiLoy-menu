@@ -438,24 +438,24 @@ lightMode.addEventListener('click', () => {
 
 // ------------------------------------------------------------------
 //             Scrolling up and down navbar
-let lastScrollTop = 0;
-const navbar = document.getElementById('navbar');
+// let lastScrollTop = 0;
+// const navbar = document.getElementById('navbar');
 
-window.addEventListener('scroll', function() {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+// window.addEventListener('scroll', function() {
+//     const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-    if (currentScroll > lastScrollTop) {
-        // Scrolling down
-        navbar.classList.remove('navbar-hidden');
-    } else if(currentScroll == 0) {
-        navbar.classList.remove('navbar-hidden');
-    }
-    else {
-        // Scrolling up
-        navbar.classList.add('navbar-hidden');
-    }
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-});
+//     if (currentScroll > lastScrollTop) {
+//         // Scrolling down
+//         navbar.classList.remove('navbar-hidden');
+//     } else if(currentScroll == 0) {
+//         navbar.classList.remove('navbar-hidden');
+//     }
+//     else {
+//         // Scrolling up
+//         navbar.classList.add('navbar-hidden');
+//     }
+//     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+// });
 
 // ------------------------------------------------------------------
 /*                        Fetching menu data                       */

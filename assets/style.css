@@ -46,11 +46,11 @@ header{
 /* navbar scrolling CSS */
 
 #navbar {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 10px 40px;
+    /* padding: 10px 40px; */
     margin: 0;
     z-index: 100;
     background-color: white;
@@ -61,12 +61,37 @@ header{
     padding: 10px 20px;
 }
 
+.logo-container h5{
+    font-size: 30px;
+}
+
 .navbar-hidden {
     transform: translateY(-100%);
 }
 
+.place-header h1{
+    margin-top: 20px;
+    font-size: 10px !important;
+    font-weight: 400;
+    color: red;
+}
+
+.place-header h1{
+    color: red;
+}
+
+.info-place{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.info-place-item{
+    width: 50%;
+}
+
+
 main{
-    padding-top: 100px;
+    padding-top: 1px;
 }
 
 /* -------------------- */
@@ -320,7 +345,7 @@ main{
     top: 0px;
     background-color: white;
     z-index: 10;
-    padding: 15px 0 0;
+    padding: 7px 0;
     padding-right: 5px;
     width: 100%;
 }
@@ -569,9 +594,6 @@ section h4{
 /* --------------------------------------- */
 
 @media screen and (max-width: 768px) {
-    main{
-        padding-top: 80px;
-    }
     .search-result{
         align-items: flex-end;
         padding-right: 10px;
@@ -596,15 +618,21 @@ section h4{
 }
 
 @media screen and (max-width: 470px) {
-    main{
-        padding-top: 70px;
-    }
-
     .nav-right{
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 5px;
+    }
+
+    .info-place{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    
+    .info-place-item{
+        width: 80%;
     }
 
     .search-result-item{
