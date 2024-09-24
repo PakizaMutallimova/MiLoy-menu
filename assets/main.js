@@ -97,19 +97,20 @@ const newItem2 = {
     description: "A delicious salad with peanut, pineapple, x, y, and coconut",
     weight: "250",
     "price": {
-        "price": 0,
-        "priced": 0,
-        "xs": "10",
-        "xsd": "17",
-        "s": "11",
-        "sd": "16",
-        "m": "12",
-        "md": "15",
-        "l": "13",
-        "ld": "14",
-        "xl": "14",
-        "xld": "16"
+        "price": 3,
+        "priced": 1234,
+        // "xs": "10",
+        // "xsd": "17",
+        // "s": "11",
+        // "sd": "16",
+        // "m": "12",
+        // "md": "15",
+        // "l": "13",
+        // "ld": "14",
+        // "xl": "14",
+        // "xld": "16"
     },
+
     "addons": [
         {
             "name": "Add-on 1",
@@ -364,7 +365,7 @@ coffeeData.categories.push(newcategory, newcategory1, newcategory2, newcategory3
 console.log(coffeeData);
 
 const parsed = JSON.parse("{\"categories\":[{\"id\":0,\"name\":\"BREAKFASTS (8 AM - 10 AM)\"},{\"id\":1,\"name\":\"Banana\"}],\"items\":[{\"id\":0,\"categoryId\":0,\"name\":\"Tomato\",\"image\":\"https://eu2.contabostorage.com/3f9b49d682d34ec79a0010ab121089ca:common-menu/1083/items/3db5fe4d-307d-4370-9fed-084e95e990ce.png\",\"description\":\"1\",\"weight\":\"105\",\"price\":{\"price\":0,\"priced\":0,\"xs\":\"1\",\"s\":\"2\",\"m\":\"2\",\"l\":\"3\",\"xl\":\"4\"},\"addons\":[],\"specials\":{\"halal\":true,\"kosher\":false,\"vegetarian\":false,\"vegan\":false,\"hot\":true,\"gluten\":false}},{\"id\":1,\"categoryId\":1,\"name\":\"Catfish on pumpkin puree\",\"image\":\"https://eu2.contabostorage.com/3f9b49d682d34ec79a0010ab121089ca:common-menu/1083/items/e4702f14-91cf-4654-a022-3fc7b9b1885d.png\",\"description\":\"Catfish fillet baked with young potatoes. Served with salad and pumpkin puree\",\"weight\":\"4\",\"price\":{\"price\":\"10\",\"priced\":\"3\",\"xs\":0,\"xsd\":0,\"s\":0,\"sd\":0,\"m\":0,\"md\":0,\"l\":0,\"ld\":0,\"xl\":0,\"xld\":0},\"addons\":[],\"specials\":{\"halal\":false,\"kosher\":false,\"vegetarian\":true,\"vegan\":false,\"hot\":true,\"gluten\":false}}]}")
-console.log(parsed);
+// console.log(parsed);
 
 const allergies = ['Peanut', 'Gluten', 'Milk', 'Soy', 'Egg', 'Fish', 'Coconut', 'Wheat', 'Sesame', 'Sugar', 'Mustard', 'Celery']
 /* ------------------------------------------------------------------ */
@@ -435,28 +436,6 @@ lightMode.addEventListener('click', () => {
     lightMode.style.display = 'none'
 })
 
-
-// ------------------------------------------------------------------
-//             Scrolling up and down navbar
-// let lastScrollTop = 0;
-// const navbar = document.getElementById('navbar');
-
-// window.addEventListener('scroll', function() {
-//     const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-//     if (currentScroll > lastScrollTop) {
-//         // Scrolling down
-//         navbar.classList.remove('navbar-hidden');
-//     } else if(currentScroll == 0) {
-//         navbar.classList.remove('navbar-hidden');
-//     }
-//     else {
-//         // Scrolling up
-//         navbar.classList.add('navbar-hidden');
-//     }
-//     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-// });
-
 // ------------------------------------------------------------------
 /*                        Fetching menu data                       */
 
@@ -476,8 +455,8 @@ function fetchingMenuData(category, item) {
                     <div class="ms-3">
                         <h5 class="product-name mb-0">${product.name}</h5>
                         <div class="product-price d-flex">
-                            <p class="mb-0 text-muted">${product.price.xs} ₼</p>
-                            ${product.price.xsd ? `<p class="mb-0 text-muted"><del>${product.price.xsd} ₼</del></p>` : ""}
+                            <p class="mb-0 text-muted">${product.price.price !== 0 ? product.price.price : product.price.xs} ₼</p>
+                            ${product.price.priced !== 0 ? `<p class="mb-0 text-muted"><del>${product.price.priced} ₼</del></p>` : `<p class="mb-0 text-muted"><del>${product.price.xsd} ₼</del></p>`}
                         </div>
                     </div>
                     <img src="${product.image}" class="img img-fluid rounded" style="width: 100px; height: 80px;" alt="Espresso double">
@@ -549,7 +528,7 @@ document.addEventListener('click', (e)=>{
             </div>`
          }).join('')
         document.querySelector('.type-place').innerHTML += addons
-    // ------------------------------------------------------------------
+        // --------------------------------------------
         const sizeItem = allSizes.map(size => {
             return `<div class="size-card d-flex justify-content-between align-items-center">
                 <div class="cup-description d-flex justify-content-start align-items-center">
@@ -563,6 +542,7 @@ document.addEventListener('click', (e)=>{
             </div>`
         }).join('')
         document.querySelector('.size-place').innerHTML += sizeItem
+        // --------------------------------------------
     }
     else if (eTar.classList.contains("see-more-back") || eTar.classList.contains("close-seeMore")) {
         body.style.overflow = "auto"
@@ -651,9 +631,15 @@ applyFilter.addEventListener('click', ()=>{
                     }
                 }
             }
-        });        
+        });
     });
-    fetchingMenuData(newFilteredCategory, newFilteredItem)
+    if (newFilteredItem.length === 0) {
+        menuCards.innerHTML = '<div class="d-flex align-items-center justify-content-center"><img src="https://www.new4you.in/img/no_products_found.png" alt=""></div>'
+        slider.innerHTML = '';
+    }
+    else{
+        fetchingMenuData(newFilteredCategory, newFilteredItem)
+    }
     if (activeFilters.length == 0) {
         fetchingMenuData(categories, items)
     }
@@ -706,10 +692,8 @@ function performSearch(event) {
     }
 
     searchResultItems = items.filter(item => item.name.toLowerCase().includes(searchTerm));
-    console.log(searchResultItems);
     
     let searchResults = searchResultItems.map(item => {
-        console.log(item);
         return `
         <div class="search-result-item">
             <div class="entire-card" data-id="${item.itemID}"></div>
@@ -730,52 +714,6 @@ const debouncedSearch = debounce(() => performSearch(searchInput.value), 500);
 searchInput.addEventListener('input', debouncedSearch);
 //----------------------------------------------------------------------
 
-window.addEventListener('click', (e) => {
-    if (e.target.classList.contains('entire-card')) {
-        body.style.overflow = "hidden"
-        seeMoreBack.style.display = "block"        
-
-        const selectedItemID = parseInt(e.target.getAttribute('data-id'))
-        const selectedItem = searchResultItems.find(item => item.itemID === selectedItemID)
-
-        if (!selectedItem) {
-            return;
-        }
-
-        const sizesArray = ['xs', 's', 'm', 'l', 'xl']
-        const allSizes = Object.keys(selectedItem.price).filter(key => sizesArray.includes(key))
-        let addons = selectedItem.addons.map(addon => {
-            return `
-            <div class="addons type-card d-flex justify-content-between align-items-center">
-                <div class="cup-description d-flex justify-content-start align-items-center">
-                    <img src="./assets/images/done.svg" width="30px" height="30px" alt="">
-                    <span>${addon.name}</span>
-                </div>
-                <div class="price-of-cup d-flex justify-content-start align-items-center">
-                    <span>${addon.price} ₼</span>
-                </div>
-            </div>`
-         }).join('')
-        document.querySelector('.type-place').innerHTML += addons
-    // ---------------------------------------------
-        const sizeItem = allSizes.map(size => {
-            return `<div class="size-card d-flex justify-content-between align-items-center">
-                <div class="cup-description d-flex justify-content-start align-items-center">
-                    <img src="./assets/images/${size.toLocaleUpperCase()}.svg" width="30px" height="30px" alt="">
-                    <b>${size.toLocaleUpperCase()}</b>
-                    <span>230ml</span>
-                </div>
-                <div class="price-of-cup d-flex justify-content-start align-items-center">
-                    <span>${selectedItem.price[size]} ₼</span>
-                </div>
-            </div>`
-        }).join('')
-        document.querySelector('.size-place').innerHTML += sizeItem
-    // --------------------------------------------
-    }
-});
-
-// ----------------------------------------------------------------------
 /**
  * Filter modal
  */
