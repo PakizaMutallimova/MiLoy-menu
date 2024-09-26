@@ -422,23 +422,6 @@ document.addEventListener('click', (e) => {
     }
 })
 
-// -----------------------------------------------------------------
-/*                      Dark and light mode                        */
-// const darkMode = document.querySelector('.dark')
-// const lightMode = document.querySelector('.light')
-
-// darkMode.addEventListener('click', () => {
-//     let isDark = document.body.classList.toggle('dark-mode');
-//     localStorage.setItem('darkModeChecker', isDark ? 'enabled' : 'disabled')
-//     document.body.classList.contains('dark-mode') ? darkMode.style.display = 'none' : lightMode.style.display = 'block'
-// })
-
-// lightMode.addEventListener('click', () => {
-//     document.body.classList.remove('dark-mode')
-//     darkMode.style.display = 'block'
-//     lightMode.style.display = 'none'
-// })
-
 // ------------------------------------------------------------------
 /*                        Fetching menu data                       */
 
