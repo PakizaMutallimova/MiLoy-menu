@@ -388,6 +388,18 @@ slider.addEventListener('click', (e) => {
         e.target.id == item.id ? item.classList.add("active") : item.classList.remove("active"));
 });
 
+const sliderPlace = document.querySelector('.slider-place')
+window.addEventListener('scroll', () => {
+    if (sliderPlace.getBoundingClientRect().top <= 0) {
+        slider.classList.add('slider-on-the-top')
+        slider.style.zIndex = '100000'
+        document.querySelector('main').style.paddingTop = '40px'
+    }
+    else {
+        slider.classList.remove('slider-on-the-top')
+        document.querySelector('main').style.paddingTop = '0px'
+    }
+})
 
 // -------------------------------------------------------------------
 /*                          Popup image                             */
@@ -412,29 +424,20 @@ document.addEventListener('click', (e) => {
 
 // -----------------------------------------------------------------
 /*                      Dark and light mode                        */
-const darkMode = document.querySelector('.dark')
-const lightMode = document.querySelector('.light')
+// const darkMode = document.querySelector('.dark')
+// const lightMode = document.querySelector('.light')
 
-darkMode.addEventListener('click', () => {
-    let isDark = document.body.classList.toggle('dark-mode');
-    localStorage.setItem('darkModeChecker', isDark ? 'enabled' : 'disabled')
-    document.body.classList.contains('dark-mode') ? darkMode.style.display = 'none' : lightMode.style.display = 'block'
-})
-// document.addEventListener("DOMContentLoaded", ()=>{
-//     if (localStorage.getItem('darkModeChecker') === 'enabled') {
-//         console.log(localStorage.getItem('darkModeChecker'));
-        
-//         document.body.classList.add('dark-mode')
-//         darkMode.style.display = 'none'
-//         lightMode.style.display = 'block'
-//     }
+// darkMode.addEventListener('click', () => {
+//     let isDark = document.body.classList.toggle('dark-mode');
+//     localStorage.setItem('darkModeChecker', isDark ? 'enabled' : 'disabled')
+//     document.body.classList.contains('dark-mode') ? darkMode.style.display = 'none' : lightMode.style.display = 'block'
 // })
 
-lightMode.addEventListener('click', () => {
-    document.body.classList.remove('dark-mode')
-    darkMode.style.display = 'block'
-    lightMode.style.display = 'none'
-})
+// lightMode.addEventListener('click', () => {
+//     document.body.classList.remove('dark-mode')
+//     darkMode.style.display = 'block'
+//     lightMode.style.display = 'none'
+// })
 
 // ------------------------------------------------------------------
 /*                        Fetching menu data                       */
